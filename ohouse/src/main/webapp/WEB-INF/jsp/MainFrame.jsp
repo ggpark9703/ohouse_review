@@ -1,0 +1,47 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+        content="width=device-width,user-scalable=no,initial-scale=1.0,
+        maximum-scale=1.0,minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+<link href="<%=request.getContextPath()%>/css/styles.css" rel="stylesheet" type="text/css"/>
+<title>Insert title here</title>
+</head>
+<body>
+        <nav class="navbar navbar-light bg-dark">
+            <ul class="menu1">
+                <li onclick="ajaxTest('/Main')">메인화면</li>
+                <li onclick="ajaxTest('/keyword')">오늘의 추천</li>
+                <li onclick="ajaxTest('/recommend')">오늘의 분석</li>
+            </ul>
+        </nav>
+  <div id="Context">
+    test
+  </div>
+
+<script type="text/javascript">
+function ajaxTest(url_page){
+    $.ajax({
+      type : "GET",
+      url : url_page,
+      dataType : "text",
+      error : function() {
+        alert('통신실패!!');
+      },
+      success : function(data) {
+        $('#Context').html(data);
+      }
+
+    });
+  }
+</script>
+
+
+</body>
+</html>
