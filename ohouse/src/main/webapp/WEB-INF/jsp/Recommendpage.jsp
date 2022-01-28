@@ -23,37 +23,24 @@
 </style>
 
 <body>
-
-<div class="scene">
-  <div class="card">
-    <div class="card__face card__face--front" style="overflow:scroll; width:350px; height:200px;">
-<ul class="list-group">
-            <li class="list-group-item">Lorem</li>
-            <li class="list-group-item">Ipsum</li>
-            <li class="list-group-item">Dolor</li>
-            <li class="list-group-item">Lorem</li>
-            <li class="list-group-item">Ipsum</li>
-            <li class="list-group-item">Dolor</li>
-            <li class="list-group-item">Lorem</li>
-            <li class="list-group-item">Ipsum</li>
-            <li class="list-group-item">Dolor</li>
-            <li class="list-group-item">Lorem</li>
-            <li class="list-group-item">Ipsum</li>
-            <li class="list-group-item">Dolor</li>
-            <li class="list-group-item">Lorem</li>
-            <li class="list-group-item">Ipsum</li>
-            <li class="list-group-item">Dolor</li>
-          </ul>
-</div>
-    <div class="card__face card__face--back">back</div>
+<div class="card" style="width: 24rem;">
+  <img src="<%=request.getContextPath()%>/img/testimg.png" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">
+    <ul class="mylist">
+	</ul>
+	</p>
   </div>
 </div>
-<script type="text/javascript">
-var card = document.querySelector('.card');
-card.addEventListener( 'click', function() {
-  card.classList.toggle('is-flipped');
-});
-</script>
+<div class="dropdown">
+  <button class="dropbtn">Dropdown</button>
+  <div class="dropdown-content">
+    <a href="#" onclick="categorySort('책상')">책상</a>
+    <a href="#" onclick="categorySort('침대')">침대</a>
+  </div>
+</div>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/Recommend.js"></script>
 </body>
 
 </html>

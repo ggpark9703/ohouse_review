@@ -173,3 +173,10 @@
  background-image:url(http://i111.photobucket.com/albums/n144/baby_painting/bowlace2.gif);
  background-repeat: repeat-x; 
 }
+
+.mylist{
+	height: 102px; overflow-x: scroll; width: 100%; -ms-overflow-style: none;
+}
+.mylist::-webkit-scrollbar{ display:none; }
+
+
