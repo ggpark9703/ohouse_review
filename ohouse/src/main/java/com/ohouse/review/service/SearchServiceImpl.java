@@ -12,12 +12,12 @@ import org.springframework.stereotype.Service;
 public class SearchServiceImpl implements SearchService {
 
 	@Override
-	public String getCorrelation(String category) {
+	public String getCorrelation(String category,String filter) {
 		StringBuilder sb = new StringBuilder();
 		URLConnection urlConn = null;
 		InputStreamReader in = null;
 		
-		String myURL = "http://wex.test.com:8393/api/v10/search/facet?collection=T1_OZIP&facet=%7B%22namespace%22%3A%22keyword%22%2C%22count%22%3A%225%22%2C%22id%22%3A%22$.product_title%22%7D&query=(idx_child:*)%20AND%20(keyword::/%22product_category%22/"+category+")%20AND%20(product_title:*)&output=application/json";
+		String myURL = "http://wex.test.com:8393/api/v10/search/facet?collection=T1_OZIP2022&facet=%7B%22namespace%22%3A%22keyword%22%2C%22count%22%3A%225%22%2C%22id%22%3A%22%24.product_title%22%7D&query="+filter+"AND%20(keyword%3A%3A%2F%22product_category%22%2F%22%EB%A7%A4%ED%8A%B8%EB%A6%AC%EC%8A%A4%22)&output=application/json";
 		
 		try {
 			URL url = new URL(myURL);
@@ -53,7 +53,7 @@ public class SearchServiceImpl implements SearchService {
 		URLConnection urlConn = null;
 		InputStreamReader in = null;
 		
-		String myURL = "http://wex.test.com:8393/api/v10/search?collection=T1_OZIP&facet=%7B%22namespace%22%3A%22keyword%22%2C%22count%22%3A%225%22%2C%22id%22%3A%22$.product_title%22%7D&query=(idx_child:*)%20AND%20(keyword::/%22product_category%22/"+category+")%20AND%20(product_title:"+keyword+")&output=application/json";
+		String myURL = "http://wex.test.com:8393/api/v10/search?collection=T1_OZIP2022&facet=%7B%22namespace%22%3A%22keyword%22%2C%22count%22%3A%225%22%2C%22id%22%3A%22$.product_title%22%7D&query=(idx_child:*)%20AND%20(keyword::/%22product_category%22/"+category+")%20AND%20(product_title:"+keyword+")&output=application/json";
 		
 		try {
 			URL url = new URL(myURL);

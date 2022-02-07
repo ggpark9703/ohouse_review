@@ -8,87 +8,107 @@ $(document).ready(function(){
 	$.ajax({
 		type: "GET",
 		url: "/api",
-		data: {category:encodeURIComponent("책상")},
+		data: {category:encodeURIComponent("매트리스"),filter:encodeURIComponent('(keyword::/"가격-긍정"/"가격")')},
 		success: function(response){
-			var jObj = JSON.parse(response);
-			var jp_1= jObj.es_apiResponse.ibmsc_facet.ibmsc_facetValue;
-			console.log(jp_1)
-			for(var i in jp_1){
-				console.log(jp_1[i].label)
-				console.log(jp_1[i].weight)
-				//수정해야할것 카테고리 받아가야함 
-				var correlation= parseFloat(jp_1[i].es_property[0].value);
-				if (correlation>1.3){
-					$(".card-title").text(jp_1[i].label)
-					$.ajax({
-						type: "GET",
-						url: "/reviews",
-						data:{
-							  keyword:'"'+encodeURIComponent(jp_1[i].label)+'"',
-							  category:encodeURIComponent("책상")
-							  },
-						success: function(data){
-							var jObj2 = JSON.parse(data);
-							var jp_2 = jObj2.es_apiResponse.es_result
-							var review_data = ""
-							for(var i in jp_2){
-								sum.push(jp_2[i].es_summary);
-								var summury = jp_2[i].es_summary.substr(0,17)+"...";
-								review_data += "<li onclick='getPaging("+i+")'>"+summury
-								review_data += jp_2[i].es_title+"</li>"
-							}
-							$(".mylist").append(review_data)
-						}
-					})
-				}
+			var parse0 = JSON.parse(response);
+			console.log(parse0)
+			var Json = parse0['es_apiResponse']['ibmsc_facet']['ibmsc_facetValue'];
+			
+			var test = "";
+			var arr = new Array();
+			var valueArr = new Array();
+			for (idx in Json){
+				test += "  "+Json[idx]['es_property'][0]['value']
+				arr[idx] = Json[idx]['label'].substr(0,16);
+				valueArr = Json[idx]['es_property'][0]['value']
 			}
+			$('#price').text(test)
+			            var context = document
+                .getElementById('priceChart')
+                .getContext('2d');
+            var myChart = new Chart(context, {
+                type: 'bar', // 차트의 형태
+                data: { // 차트에 들어갈 데이터
+                    labels: arr,
+                    datasets: [
+                        { //데이터
+                            label: 'test1', //차트 제목
+                            fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
+                            data: valueArr,
+                            backgroundColor: [
+                                //색상
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)'
+                            ],
+                            borderColor: [
+                                //경계선 색상
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)'
+                            ],
+                            borderWidth: 1 //경계선 굵기
+                        }
+                    ]
+                },
+                options: {
+					
+                    scales: {
+                        yAxes: [
+                            {
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }
+                        ]
+                    }
+                }
+            });
+		}
+	})
+	$.ajax({
+		type: "GET",
+		url: "/api",
+		data: {category:encodeURIComponent("매트리스"),filter:encodeURIComponent('(keyword::/"내구성-추천"/"내구성")')},
+		success: function(response){
+			var parse0 = JSON.parse(response);
+			console.log(parse0)
+			var Json = parse0['es_apiResponse']['ibmsc_facet']['ibmsc_facetValue'];
+			
+			var test = "";
+			
+			for (idx in Json){
+				test += "  "+Json[idx]['es_property'][0]['value']
+			}
+			
+			$('#durability').text(test)
+			
+		}
+	})
+	$.ajax({
+		type: "GET",
+		url: "/api",
+		data: {category:encodeURIComponent("매트리스"),filter:encodeURIComponent('(keyword::/"디자인-추천"/"디자인")')},
+		success: function(response){
+			var parse0 = JSON.parse(response);
+			console.log(parse0)
+			var Json = parse0['es_apiResponse']['ibmsc_facet']['ibmsc_facetValue'];
+			
+			var test = "";
+			
+			for (idx in Json){
+				test += "  "+Json[idx]['es_property'][0]['value']
+			}
+			
+			$('#design').text(test)
 			
 		}
 	})
 });
 function getPaging(i){
 	console.log(sum[i])
-}
-function categorySort(s){
-		$.ajax({
-		type: "GET",
-		url: "/api",
-		data: {category:encodeURIComponent(s)},
-		success: function(response){
-			var jObj = JSON.parse(response);
-			var jp_1= jObj.es_apiResponse.ibmsc_facet.ibmsc_facetValue;
-			console.log(jp_1)
-			for(var i in jp_1){
-				console.log(jp_1[i].label)
-				console.log(jp_1[i].weight)
-				//수정해야할것 카테고리 받아가야함 
-				var correlation= parseFloat(jp_1[i].es_property[0].value);
-				if (correlation>1.3){
-					$(".card-title").text(jp_1[i].label)
-					$.ajax({
-						type: "GET",
-						url: "/reviews",
-						data:{
-							  keyword:'"'+encodeURIComponent(jp_1[i].label)+'"',
-							  category:encodeURIComponent(s)
-							  },
-						success: function(data){
-							var jObj2 = JSON.parse(data);
-							var jp_2 = jObj2.es_apiResponse.es_result
-							var review_data = ""
-							for(var i in jp_2){
-								sum.push(jp_2[i].es_summary);
-								var summury = jp_2[i].es_summary.substr(0,17)+"...";
-								review_data += "<li onclick='getPaging("+i+")'>"+summury
-								review_data += jp_2[i].es_title+"</li>"
-							}
-							$(".mylist").children().remove();
-							$(".mylist").append(review_data)
-						}
-					})
-				}
-			}
-			
-		}
-	})
 }
