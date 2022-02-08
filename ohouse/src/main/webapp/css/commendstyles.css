@@ -1,13 +1,75 @@
-body{
-	background-color: #1e90ff;
-	
+@font-face {
+    font-family: 'OTWelcomeBA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeBA.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
 }
-.container{
-	width:100%;
-	margin:0 auto;
-	background:#1e90ff;
-	position:relative;
+@font-face {
+    font-family: 'GongGothicMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+}
+.card-wrapper{
+	padding-top: 150px;
+	text-align: center;
 }
 .card{
-	width:30%;
+	width:400px;
+	line-height: 100px;
+	color: black;
+	text-align: center;
+	margin:0 10px;
+	display: inline-block;
+	border-radius: 15px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
+.card-title{
+	font-size: 15pt;
+	font-family: 'OTWelcomeBA';
+}
+
+.navbar.fixed-bottom{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  background-color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.btn-primary {
+  font-family: GongGothicMedium;
+  font-size: 15px;
+  color: rgba(58, 133, 191, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(58, 133, 191, 0.75);
+  border-radius: 40px;
+  background: white;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-primary:hover {
+  color: #FFF;
+  background: rgba(58, 133, 191, 1);
+  border: 2px solid rgba(58, 133, 191, 0.75);
+}
+.btn-primary.active {
+  color: #FFF;
+  background: rgba(58, 133, 191, 3);
+  border: 2px solid rgba(58, 133, 191, 0.75);
+}
+.active{
+  color: #FFF;
+  background: rgba(58, 133, 191, 0.75);
+  border: 2px solid rgba(58, 133, 191, 0.75);
+}
+
+
