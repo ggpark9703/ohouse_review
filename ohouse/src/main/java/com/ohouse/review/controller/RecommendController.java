@@ -13,8 +13,8 @@ public class RecommendController {
 	private SearchService searchService;
 	
 	@RequestMapping(value="/api",method = RequestMethod.GET)
-	public String searchQuery(@RequestParam("category") String category) {
-		String result = searchService.getCorrelation(category);
+	public String searchQuery(@RequestParam("category") String category,@RequestParam("filter") String filter) {
+		String result = searchService.getCorrelation(category,filter);
 		return result;
 	}
 	@RequestMapping(value="/reviews",method = RequestMethod.GET)

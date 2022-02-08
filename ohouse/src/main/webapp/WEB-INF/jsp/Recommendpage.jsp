@@ -1,46 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" />
-  <title>Custom Bootstrap 4 card</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link href="<%=request.getContextPath()%>/css/styles.css" rel="stylesheet" type="text/css"/>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/commendstyles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
 </head>
+<body> 
+ <div class="row hidden-md-up">
+ 
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+         <div style="width: 100%; height: 100%;">
+	       <canvas id="priceChart"></canvas>
+         </div>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  
+vs
+  
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text" id="durability">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  
+vs
 
-<style>
 
-  .container {
-    font-size: 14px;
-    color: #666666;
-    font-family: "Open Sans";
-  }
-</style>
-
-<body>
-<div class="card" style="width: 24rem;">
-  <img src="<%=request.getContextPath()%>/img/testimg.png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">
-    <ul class="mylist">
-	</ul>
-	</p>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text" id="design">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
   </div>
 </div>
-<div class="dropdown">
-  <button class="dropbtn">Dropdown</button>
-  <div class="dropdown-content">
-    <a href="#" onclick="categorySort('책상')">책상</a>
-    <a href="#" onclick="categorySort('침대')">침대</a>
-  </div>
-</div>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/Recommend.js"></script>
+<script type="text/javascript" src = "<%=request.getContextPath()%>/js/Recommend.js"></script>
 </body>
-
 </html>

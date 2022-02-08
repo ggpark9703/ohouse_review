@@ -1,0 +1,13 @@
+body{
+	background-color: #1e90ff;
+	
+}
+.container{
+	width:100%;
+	margin:0 auto;
+	background:#1e90ff;
+	position:relative;
+}
+.card{
+	width:30%;
+}
