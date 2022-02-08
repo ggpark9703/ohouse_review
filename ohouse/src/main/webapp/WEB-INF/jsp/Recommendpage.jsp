@@ -13,10 +13,10 @@
 
  <div class="card-wrapper">
 	   <div class="card">
-	    <img class="card-img-top" src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/162269626749505136.jpg?gif=1&w=640&h=640&c=c" 
-	    alt="Card image cap" style="height:250px;width:250px;border-radius: 70%;overflow: hidden;margin-top:-50px;">
 	      <div class="card-body">
-	        <h5 class="card-title" id="titlePrice">Special title treatment</h5>
+	      	    <img class="card-img-top" src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/162269626749505136.jpg?gif=1&w=640&h=640&c=c" 
+	    alt="Card image cap">
+	        <h5 class="card-title" id="titlePrice"></h5>
 	         <div style="width: 100%; height: 100%;">
 		       <canvas id="priceChart"></canvas>
 	         </div>
@@ -24,9 +24,9 @@
 	   </div>
 	   vs
 	   <div class="card">
-	    <img class="card-img-top" src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/162269626749505136.jpg?gif=1&w=640&h=640&c=c" 
-	    alt="Card image cap" style="height:250px;width:250px;border-radius: 70%;overflow: hidden;margin-top:-50px;">
 	      <div class="card-body">
+	      <img class="card-img-top" src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/162269626749505136.jpg?gif=1&w=640&h=640&c=c" 
+	    alt="Card image cap">
 	        <h5 class="card-title" id="titleDurablity">Special title treatment</h5>
 	         <div style="width: 100%; height: 100%;">
 		       <canvas id="durablityChart"></canvas>
@@ -35,9 +35,9 @@
 	   </div>
 	   vs
 	   <div class="card">
-	    <img class="card-img-top" src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/162269626749505136.jpg?gif=1&w=640&h=640&c=c" 
-	    alt="Card image cap" style="height:250px;width:250px;border-radius: 70%;overflow: hidden;margin-top:-50px;">
 	      <div class="card-body">
+	      <img class="card-img-top" src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/162269626749505136.jpg?gif=1&w=640&h=640&c=c" 
+	    alt="Card image cap" >
 	        <h5 class="card-title" id="titleDesign">Special title treatment</h5>
 	         <div style="width: 100%; height: 100%;">
 		       <canvas id="designChart"></canvas>
