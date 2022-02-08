@@ -28,7 +28,7 @@
                 <li onclick="ajaxTest('/keyword')">오늘의 분석</li>
             </ul>
         </nav>
-  <div id="Context">
+  <div id="Context" class="view_frame">
     test
   </div>
 

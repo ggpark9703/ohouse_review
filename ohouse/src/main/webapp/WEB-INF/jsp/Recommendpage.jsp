@@ -10,7 +10,7 @@
 
 </head>
 <body> 
-
+내구성
  <div class="card-wrapper">
 	   <div class="card">
 	      <div class="card-body">
