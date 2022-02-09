@@ -23,47 +23,55 @@
 <body>
 
   <section class="section swiper-container swiper-slider swiper-slider-1" data-loop="false" data-autoplay="5500" data-simulate-touch="false" data-slide-effect="fade">
+
+	<!-- 가성비 -->
     <div class="swiper-wrapper">
-      <div class="swiper-slide" data-slide-bg="https://images.unsplash.com/photo-1484101403633-562f891dc89a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fGZ1cm5pdHVyZXN8ZW58MHwwfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60">
+      <div class="swiper-slide" data-slide-bg="./images/cost.png">
         <div class="swiper-slide-caption section-md">
           <div class="container">
             <div class="row">
               <div class="col-sm-10 col-lg-8 col-xl-7">
-                <h1 class="heading-decorate" data-caption-animate="fadeInUp" data-caption-delay="100"><span class="text-primary">Solari</span> Beauty Salon <br><span class="divider"></span>Beauty as a gift
+                <h1 class="heading-decorate" data-caption-animate="fadeInUp" data-caption-delay="100">가장 <span class="text-primary">가성비</span>좋은 <br><span class="divider"></span>가구를 원한다면?
                 </h1>
-                <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="250">Solari Beauty Salon offers the latest and highest quality services for you and all your family members. We specialize in all beauty treatments and our team is fully professional and innovative, from makeup services to hairstyling.</p>
+                <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="250">#가성비_갑 #합리적_소비 #착한가격</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+      
+      <!-- 내구성 -->
       <div class="swiper-slide" data-slide-bg="https://images.unsplash.com/photo-1616627408664-00fa6151580c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzF8fGZ1cm5pdHVyZXN8ZW58MHwwfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60">
         <div class="swiper-slide-caption section-md">
           <div class="container">
             <div class="row">
               <div class="col-md-10 col-lg-8 col-xl-7">
-                <h1 class="heading-decorate" data-caption-animate="fadeInUp" data-caption-delay="100"><span class="text-primary">Experience </span> the Best<br><span class="divider"></span>Beauty Services
+                <h1 class="heading-decorate" data-caption-animate="fadeInUp" data-caption-delay="100">가장 <span class="text-primary">튼튼</span>한 <br><span class="divider"></span>가구를 원한다면?
                 </h1>
-                <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="250">We offer a full range of hairdressing services for men and women, eyebrow and eyelash care, the services of make-up artists and stylists. Entrust your beauty to professionals who really care about your style and look!</p>
+                <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="250">#내구성_만점 #튼튼 #탄탄 #짱짱</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+      
+      <!-- 디자인 -->
       <div class="swiper-slide" data-slide-bg="https://images.unsplash.com/photo-1573879500655-98f2012dd1db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhbmdlcnxlbnwwfDB8MHx8&auto=format&fit=crop&w=500&q=60">
         <div class="swiper-slide-caption section-md">
           <div class="container">
             <div class="row">
               <div class="col-md-10 col-lg-8 col-xl-7">
-                <h1 class="heading-decorate" data-caption-animate="fadeInUp" data-caption-delay="100">Professional <span class="text-primary">Beauty</span> <br><span class="divider"></span>Care for Everyone
+                <h1 class="heading-decorate" data-caption-animate="fadeInUp" data-caption-delay="100">가장 <span class="text-primary">예뻐</span>보이는 <br><span class="divider"></span>가구를 원한다면?
                 </h1>
-                <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="250">Our beauty salon treatments will help you relax after a long and stressful day. At Solari, you can pamper yourself and enjoy the benefits of professional beauty care available at affordable price. Enjoy your life with our high-quality beauty services.</p>
+                <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="250">#디자인_최고 #분위기_끝판왕 #색감_깡패</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+
     </div>
+    
     <!-- Swiper Pagination -->
     <div class="swiper-pagination"></div>
     <div class="swiper-counter"></div>
@@ -97,8 +105,11 @@
       </svg>
     </div>
   </section>
+  
+  	<!-- java script -->
     <script src="<%=request.getContextPath()%>/js/core.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/script.js"></script>	
+    <script src="<%=request.getContextPath()%>/js/script.js"></script>
+    
 </body>
 
 </html>
