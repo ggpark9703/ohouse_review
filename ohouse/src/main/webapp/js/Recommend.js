@@ -13,11 +13,22 @@ var context3 = document.getElementById('designChart').getContext('2d');
 var chart3 = getChart(context3);
 $(document).ready(function(){
  getApi('매트리스')
+ $('#cardtop').src='<%=request.getContextPath()%>/img/recommend_img/DK053 3인용 풀커버 패브릭 소파 5colors.png';
 });
 
 
 function getApi(category){
+		$('#text-animation').text(category);
 		console.log(chart1.data)
+		var wrapper = document.getElementsByClassName("text-animation")[0];
+		wrapper.style.opacity="1";
+		wrapper.innerHTML = wrapper.textContent.replace(/./g,"<span>$&</span>");
+		
+		var spans = wrapper.getElementsByTagName("span");
+		
+		for(var i=0;i<spans.length;i++){
+		  spans[i].style.animationDelay = i*80+"ms";
+}  		
 		$.ajax({
 		type: "GET",
 		url: "/api",
@@ -36,7 +47,8 @@ function getApi(category){
 			}
 		
 			var priceTitle = document.getElementById("titlePrice");
-			getTitle(priceTitle,valueArr,arr);
+			var img_id = document.getElementById("product_img");
+			getTitle(priceTitle,valueArr,arr,img_id);
 			chart1.data.datasets[0].data = valueArr;
 			chart1.data.labels = arr;
 			chart1.data.datasets[0].label = ['(keyword::/"가격-긍정"/"가격")',category,o_arr];
@@ -62,7 +74,8 @@ function getApi(category){
 			}
 			
 			var titleDurablity = document.getElementById("titleDurablity");
-			getTitle(titleDurablity,valueArr,arr);
+			var img_id = document.getElementById("durablity_img");
+			getTitle(titleDurablity,valueArr,arr,img_id);
 			chart2.data.labels = arr;
 			chart2.data.datasets[0].data = valueArr;
 			chart2.data.datasets[0].label = ['(keyword::/"내구성-추천"/"내구성")',category,o_arr];
@@ -89,7 +102,8 @@ function getApi(category){
 			}
 			
 			var titleDesign = document.getElementById("titleDesign");
-			getTitle(titleDesign,valueArr,arr);
+			var img_id = document.getElementById("design_img");
+			getTitle(titleDesign,valueArr,arr,img_id);
 			chart3.data.labels = arr;
 			chart3.data.datasets[0].data = valueArr;
 			chart3.data.datasets[0].label = ['(keyword::/"디자인-추천"/"디자인")',category,o_arr];
@@ -97,12 +111,15 @@ function getApi(category){
 		}
 	})
 }
-function getTitle(query,valueArr,arr){
+function getTitle(query,valueArr,arr,img_id){
 	 const maxValue = Math.max.apply(Math,valueArr)
 		for (idx in valueArr){
 			if(valueArr[idx] == maxValue){
-				console.log(arr[idx]+'성공')
+				
+				var product_name=(arr[idx].trim()+".png")
+				console.log(product_name);
 				$(query).text(arr[idx])
+				$(img_id).attr("src","../img/recommend_img/"+product_name);
 			}
 		}
 }
@@ -155,16 +172,22 @@ function getChart(context){
 											data: {product_category:encodeURIComponent(product_category),product_keyword:encodeURIComponent(product_keyword),
 													product_name:encodeURIComponent(product_name)},
 											success: function(response){
-
+												$('#review_data').empty();
 												var parse0 = JSON.parse(response);
 												var Json = parse0['es_apiResponse']['es_result'];
-												
+												var review_data = "";
 													for (idx in Json){
-														console.log(Json[idx]['es_title']);
+														
+														var user_name = Json[idx]['es_title'];
+														console.log(user_name);
 														var summury = Json[idx]['es_summary'];
-														$('#product-description').append(summury);
+														review_data += '<div class="card2 p-3 mt-2"><div class="d-flex justify-content-between align-items-center"><div class="user d-flex flex-row align-items-center">';
+														review_data += '<span><small class="font-weight-bold text-primary">'+user_name+'</small> <small class="font-weight-bold">💬 '+summury+'</small></span> </div>'
+														review_data += '</div></div>'
 													}
-												 
+							
+											    $('#review_data').append(review_data);
+											    
 											}
 										})
 								});	
@@ -217,4 +240,3 @@ $("#table").click(function(){
 	element3.classList.remove('active');
 	element4.classList.add('active');
 });
-

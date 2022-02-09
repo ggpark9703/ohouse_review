@@ -6,17 +6,21 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/commendstyles.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 <body>
-
+<div class="space_text">
+  <div class="text-animation" id="text-animation">
+    매트리스
+  </div>
+</div>
  <div class="card-wrapper">
 	   <div class="card">
 	      <div class="card-body">
-	         <h5 class="subtitle">가성비</h5>
-	      	    <img class="card-img-top" src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/162269626749505136.jpg?gif=1&w=640&h=640&c=c" 
-	    alt="Card image cap">
+	         <h5 class="subtitle">❝가성비 좋은❞</h5>
+	      	    <img class="card-img-top" id="product_img" src="" alt="Card image cap">
 	        <h5 class="card-title" id="titlePrice"></h5>
 	         <div style="width: 100%; height: 100%;">
 		       <canvas id="priceChart"></canvas>
@@ -26,9 +30,8 @@
 	  <span class="vs">vs</span>
 	   <div class="card">
 	      <div class="card-body">
-	      	<h5 class="subtitle">내구성</h5>
-	      <img class="card-img-top" src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/162269626749505136.jpg?gif=1&w=640&h=640&c=c" 
-	    alt="Card image cap">
+	      	<h5 class="subtitle">❝내구성 튼튼한❞</h5>
+	      	    <img class="card-img-top" id="durablity_img" src="" alt="Card image cap">
 	        <h5 class="card-title" id="titleDurablity">Special title treatment</h5>
 	         <div style="width: 100%; height: 100%;">
 		       <canvas id="durablityChart"></canvas>
@@ -38,9 +41,8 @@
 	 <span class="vs">vs</span>
 	   <div class="card">
 	      <div class="card-body">
-	     	 <h4 class="subtitle">디자인</h4>
-	      <img class="card-img-top" src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/162269626749505136.jpg?gif=1&w=640&h=640&c=c" 
-	    alt="Card image cap" >
+	     	 <h4 class="subtitle">❝디자인이 이쁜❞</h4>
+	      	    <img class="card-img-top" id="design_img" src="" alt="Card image cap">
 	        <h5 class="card-title" id="titleDesign">Special title treatment</h5>
 	         <div style="width: 100%; height: 100%;">
 		       <canvas id="designChart"></canvas>
@@ -55,13 +57,9 @@
                     <!--Modal Header-->   
                     <div class="modal-header">
                         <h5 class="modal-title" id="product-name">Modal Title</h5>
-                        <button type="button" class="close" data-dismiss="modal">
-                            <span>&times;</span>
-                        </button>
                     </div>
                     <!--Modal Body -->
-                    <div class="modal-body" id="product-description">
-                        <p>Modal body content will be here.</p>
+                    <div class="modal-body" id="review_data">
                     </div>
                     <!--Modal Footer-->
                     <div class="modal-footer">
@@ -74,7 +72,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
+<i class="bi bi-house-heart-fill"></i>
       <button type="button" class="btn btn-primary" id="mattress">🛏️ 매트리스</button>
       <button type="button" class="btn btn-primary" id="sofa" >🛋️ 소파</button>
       <button type="button" class="btn btn-primary" id="hangger"  >👔 행거</button>
