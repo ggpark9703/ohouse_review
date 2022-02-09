@@ -47,13 +47,16 @@ public class SearchServiceImpl implements SearchService {
 	}
 
 	@Override
-	public String getReviewData(String keyword,String category) {
+	public String getReviewData(String product_name,String product_category,String product_keyword) {
 		StringBuilder sb = new StringBuilder();
 		URLConnection urlConn = null;
 		InputStreamReader in = null;
-		
-		String myURL = "http://wex.test.com:8393/api/v10/search?collection=T1_OZIP2022&facet=%7B%22namespace%22%3A%22keyword%22%2C%22count%22%3A%225%22%2C%22id%22%3A%22$.product_title%22%7D&query=(idx_child:*)%20AND%20(keyword::/%22product_category%22/"+category+")%20AND%20(product_title:"+keyword+")&output=application/json";
-		
+		String myURL = "http://wex.test.com:8393/api/v10/search?"
+				+ "collection=T1_OZIP2022&output=application/json"
+				+ "&query=(((*%3A*)%20AND%20"+product_keyword+")"
+				+ "%20AND%20(keyword%3A%3A%2F%22product_category%22%2F"+product_category+"))"
+				+ "%20AND%20(keyword%3A%3A%2F%22product_title%22%2F%22"+product_name+"%22)";
+		System.out.println(myURL);
 		try {
 			URL url = new URL(myURL);
 			urlConn = url.openConnection();

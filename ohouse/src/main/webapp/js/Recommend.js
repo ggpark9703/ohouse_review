@@ -24,11 +24,13 @@ function getApi(category){
 		data: {category:encodeURIComponent(category),filter:encodeURIComponent('(keyword::/"가격-긍정"/"가격")')},
 		success: function(response){
 			var arr = new Array();
+			var o_arr = new Array();
             var valueArr = new Array();
 			var parse0 = JSON.parse(response);
 			console.log(parse0)
 			var Json = parse0['es_apiResponse']['ibmsc_facet']['ibmsc_facetValue'];
 			for (idx in Json){
+				o_arr[idx] = Json[idx]['label']
 				arr[idx] = Json[idx]['label'].replace(/\([^)]*\)/,"").replace(/\d{0,4}(colors|GG132C)$/,"").replace(/\[(.*?)\]/,"");
 				valueArr[idx] = Json[idx]['es_property'][0]['value']
 			}
@@ -37,6 +39,7 @@ function getApi(category){
 			getTitle(priceTitle,valueArr,arr);
 			chart1.data.datasets[0].data = valueArr;
 			chart1.data.labels = arr;
+			chart1.data.datasets[0].label = ['(keyword::/"가격-긍정"/"가격")',category,o_arr];
 			chart1.update();
 			 
 		}
@@ -50,8 +53,10 @@ function getApi(category){
 			console.log(parse0)
 			var Json = parse0['es_apiResponse']['ibmsc_facet']['ibmsc_facetValue'];
 			var arr = new Array();
+			var o_arr = new Array();
 			var valueArr = new Array();
 			for (idx in Json){
+				o_arr[idx] = Json[idx]['label'];
 				arr[idx] = Json[idx]['label'].replace(/\([^)]*\)/,"").replace(/\d{0,4}(colors|GG132C)$/,"").replace(/\[(.*?)\]/,"");
 				valueArr[idx] = Json[idx]['es_property'][0]['value']
 			}
@@ -60,6 +65,7 @@ function getApi(category){
 			getTitle(titleDurablity,valueArr,arr);
 			chart2.data.labels = arr;
 			chart2.data.datasets[0].data = valueArr;
+			chart2.data.datasets[0].label = ['(keyword::/"내구성-추천"/"내구성")',category,o_arr];
 			chart2.update();
 			
 			
@@ -74,8 +80,10 @@ function getApi(category){
 			console.log(parse0)
 			var Json = parse0['es_apiResponse']['ibmsc_facet']['ibmsc_facetValue'];
 			var arr = new Array();
+			var o_arr = new Array();
 			var valueArr = new Array();
 			for (idx in Json){
+				o_arr[idx] = Json[idx]['label'];
 				arr[idx] = Json[idx]['label'].replace(/\([^)]*\)/,"").replace(/\d{0,4}(colors|GG132C)$/,"").replace(/\[(.*?)\]/,"");
 				valueArr[idx] = Json[idx]['es_property'][0]['value']
 			}
@@ -84,8 +92,8 @@ function getApi(category){
 			getTitle(titleDesign,valueArr,arr);
 			chart3.data.labels = arr;
 			chart3.data.datasets[0].data = valueArr;
-			chart3.update();
-	          
+			chart3.data.datasets[0].label = ['(keyword::/"디자인-추천"/"디자인")',category,o_arr];
+	        chart3.update();
 		}
 	})
 }
@@ -105,7 +113,7 @@ function getChart(context){
                     labels:[0,1,2,3,4,5],
                     datasets: [
                         { //데이터
-                            label: 'hello',
+                            label: '',
                             fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
                             data: [],
                             backgroundColor: [
@@ -130,23 +138,37 @@ function getChart(context){
                 },
                 options: {
 	
- onClick: function(evt, element) {
-        if(element.length > 0) {
-            var chart_idx = element[0].index;
-           
-           console.log(myBarChart.data.labels[chart_idx]); 
-    		            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-        }},
+					onClick: function(evt, element) {
+					        if(element.length > 0) {
+					            var chart_idx = element[0].index;
+					           
+					            var product_name = myBarChart.data.datasets[0].label[2][chart_idx];
+					            var product_category = myBarChart.data.datasets[0].label[1];
+					            var product_keyword = myBarChart.data.datasets[0].label[0];
+					            
+					    		$(document).ready(function(){
+									$('#sampleModal').modal();
+									$('#product-name').text(product_name);
+									$.ajax({
+											type: "GET",
+											url: "/reviews",
+											data: {product_category:encodeURIComponent(product_category),product_keyword:encodeURIComponent(product_keyword),
+													product_name:encodeURIComponent(product_name)},
+											success: function(response){
 
-      scales: {
-         yAxes: [{
-       
-         }],
-         xAxes: [{
-         }]
-      },
+												var parse0 = JSON.parse(response);
+												var Json = parse0['es_apiResponse']['es_result'];
+												
+													for (idx in Json){
+														console.log(Json[idx]['es_title']);
+														var summury = Json[idx]['es_summary'];
+														$('#product-description').append(summury);
+													}
+												 
+											}
+										})
+								});	
+					        }},
                     plugins: {
                         legend: {
                             display: false
@@ -160,30 +182,6 @@ function getChart(context){
       return myBarChart;
 }
 
-//
-
-$(function(){
-    $('.panel-heading').click(function(e) {
-        $('.panel-heading').removeClass('tab-collapsed');
-        var collapsCrnt = $(this).find('.collapse-controle').attr('aria-expanded');
-        if (collapsCrnt != 'true') {
-            $(this).addClass('tab-collapsed');
-        }
-    });
-}) 
-
-$(function() {
- 
-  function toggleIcon(e) {
-      $(e.target)
-          .prev('.panel-heading')
-          .find(".plus-minus")
-          .toggleClass('glyphicon-plus glyphicon-minus');
-  }
-  $('.panel-group').on('hidden.bs.collapse', toggleIcon);
-  $('.panel-group').on('shown.bs.collapse', toggleIcon);
- 
-});
 
 //버튼 디자인용 JS
 var element = document.getElementById('mattress');
@@ -219,3 +217,4 @@ $("#table").click(function(){
 	element3.classList.remove('active');
 	element4.classList.add('active');
 });
+

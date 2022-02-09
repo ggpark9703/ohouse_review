@@ -7,6 +7,6 @@ public interface SearchService {
 
 	String getCorrelation(String category,String filter);
 	
-	String getReviewData(String keyword,String category);
+	String getReviewData(String product_name,String product_category,String product_keyword);
 	
 }

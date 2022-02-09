@@ -18,8 +18,9 @@ public class RecommendController {
 		return result;
 	}
 	@RequestMapping(value="/reviews",method = RequestMethod.GET)
-	public String reviewData(@RequestParam("keyword") String keyword,@RequestParam("category") String category) {
-		String reviewList = searchService.getReviewData(keyword,category);
+	public String reviewData(@RequestParam("product_keyword") String product_keyword,@RequestParam("product_category") String product_category,
+							@RequestParam("product_name") String product_name) {
+		String reviewList = searchService.getReviewData(product_name, product_category, product_keyword);
 		return reviewList;
 		
 	}

@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
 @font-face {
     font-family: 'OTWelcomeBA';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeBA.woff2') format('woff2');
@@ -10,7 +11,11 @@
     font-weight: normal;
     font-style: normal;
 }
-
+.vs{
+	font-family: 'OTWelcomeBA';
+	font-size: 40px;
+	color: #ABDEF9;
+}
 .card-img-top{
 	height:250px;
 	width:250px;
@@ -20,8 +25,14 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .card-wrapper{
-	padding-top: 250px;
+	padding-top: 180px;
 	text-align: center;
+}
+.subtitle{
+	position: relative;
+	top:-170px;
+    font-size: 20pt;
+	font-family: 'OTWelcomeBA';
 }
 .text{
 	width:400px;
@@ -53,7 +64,6 @@
 }
 
 .btn {
-  background-color: white;
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -85,5 +95,10 @@
   background: rgba(58, 133, 191, 0.75);
   border: 2px solid rgba(58, 133, 191, 0.75);
 }
+
+
+
+
+
 
 

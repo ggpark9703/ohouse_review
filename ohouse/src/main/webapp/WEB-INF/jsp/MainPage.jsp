@@ -97,7 +97,8 @@
       </svg>
     </div>
   </section>
-	
+    <script src="<%=request.getContextPath()%>/js/core.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/script.js"></script>	
 </body>
 
 </html>
