@@ -26,7 +26,7 @@
 
 	<!-- 가성비 -->
     <div class="swiper-wrapper">
-      <div class="swiper-slide" data-slide-bg="./images/cost.png">
+      <div class="swiper-slide" data-slide-bg="https://i.imgur.com/oxz4zQu.png">
         <div class="swiper-slide-caption section-md">
           <div class="container">
             <div class="row">
@@ -41,7 +41,7 @@
       </div>
       
       <!-- 내구성 -->
-      <div class="swiper-slide" data-slide-bg="https://images.unsplash.com/photo-1616627408664-00fa6151580c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzF8fGZ1cm5pdHVyZXN8ZW58MHwwfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60">
+      <div class="swiper-slide" data-slide-bg="https://i.imgur.com/qbxyYis.png">
         <div class="swiper-slide-caption section-md">
           <div class="container">
             <div class="row">
@@ -56,7 +56,7 @@
       </div>
       
       <!-- 디자인 -->
-      <div class="swiper-slide" data-slide-bg="https://images.unsplash.com/photo-1573879500655-98f2012dd1db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhbmdlcnxlbnwwfDB8MHx8&auto=format&fit=crop&w=500&q=60">
+      <div class="swiper-slide" data-slide-bg="https://i.imgur.com/gUbu3il.png">
         <div class="swiper-slide-caption section-md">
           <div class="container">
             <div class="row">
