@@ -33,6 +33,9 @@
   </div>
 
 <script type="text/javascript">
+$(document).ready(function(){
+	 ajaxTest('/Main');
+	});
 function ajaxTest(url_page){
     $.ajax({
       type : "GET",
