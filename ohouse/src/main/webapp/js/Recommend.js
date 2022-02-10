@@ -184,6 +184,7 @@ function getTitle(query,valueArr,arr,img_id){
 		}
 }
 function getChart(context){
+	Chart.defaults.global = "Georgia";
 	           var myBarChart = new Chart(context, {
                 type: 'bar', // 차트의 형태
                 data: { // 차트에 들어갈 데이터
@@ -194,6 +195,7 @@ function getChart(context){
                             label: '',
                             fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
                             data: [],
+					
                             backgroundColor: [
                                 //색상
                                 'rgba(255, 99, 132, 0.2)',
@@ -210,21 +212,23 @@ function getChart(context){
                                 'rgba(75, 192, 192, 1)',
                                 'rgba(153, 102, 255, 1)'
                             ],
-                            borderWidth: 1,//경계선 굵기,
-                            borderRadius: 5
+                            borderWidth: 0,//경계선 굵기,
+                            borderRadius: 5,
+                            lineWidth:0,
+                            pointHoverRadius: 5,
+                            hoverBackgroundColor: [
+                                //색상
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192,1)',
+                                'rgba(153, 102, 255, 1)'
+                            ]
                         }
                     ]
                 },
                 options: {
-
-					
-					scales: {
-				      y: {
-            ticks: {
-                fontSize: 40
-            }
-				      }
-				    },
+				
 					onClick: function(evt, element) {
 					        if(element.length > 0) {
 					            var chart_idx = element[0].index;
@@ -262,6 +266,33 @@ function getChart(context){
 										})
 								});	
 					        }},
+					scales: {
+					            y: {
+					                ticks: {
+					                    // Include a dollar sign in the ticks
+					                    callback: function(value, index, ticks) {
+										
+					                      return this.getLabelForValue(value);
+					                    },
+										crossAlign: "far",
+											
+										font:{
+											size:14,
+											family:'KyoboHandwriting2020A'
+										}
+										
+					                },
+					                grid: {
+							        	display: false
+							     	 }	
+					            },
+					            x:{
+									grid: {
+										        	display: false
+										     	 }	
+						
+									}
+					        },
                     plugins: {
                         legend: {
                             display: false,
@@ -273,7 +304,7 @@ function getChart(context){
 				      tooltip: {
 				        
 				        callbacks:{
-						
+						title : () => null
 						}
 				      },                                             
                    	},
