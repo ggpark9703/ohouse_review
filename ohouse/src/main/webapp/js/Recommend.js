@@ -49,12 +49,10 @@ function getApi(category){
 			var priceTitle = document.getElementById("titlePrice");
 			var img_id = document.getElementById("product_img");
 			getTitle(priceTitle,valueArr,arr,img_id);
-			chart1.data.datasets[0].dummy = ['(keyword::/"가격-긍정"/"가격")',category,o_arr];
-			chart1.update();
-			
 			arrayOfObj = arr.map(function(d,i){
 			  return{
 			    label:d,
+			    new_lable:o_arr[i],
 			    data: valueArr[i]||0
 			  };
 			});
@@ -65,15 +63,16 @@ function getApi(category){
 			
 			newArr = [];
 			newValue = [];
-			
+			new_O_Arr = [];
 			sortedArrayOfObj.forEach(function(d){
 			  newArr.push(d.label);
 			  newValue.push(d.data);
+			  new_O_Arr.push(d.new_lable);
 			});
 			
-			
-			chart1.data.labels = arr;
-			chart1.data.datasets[0].data = valueArr; 
+			chart1.data.datasets[0].dummy = ['(keyword::/"가격-긍정"/"가격")',category,new_O_Arr];
+			chart1.data.labels = newArr;
+			chart1.data.datasets[0].data = newValue; 
 			chart1.update();
 					}
 	})
@@ -96,11 +95,10 @@ function getApi(category){
 			var titleDurablity = document.getElementById("titleDurablity");
 			var img_id = document.getElementById("durablity_img");
 			getTitle(titleDurablity,valueArr,arr,img_id);
-			chart2.data.datasets[0].dummy = ['(keyword::/"내구성-추천"/"내구성")',category,o_arr];
-			chart2.update();
-			arrayOfObj = arr.map(function(d,i){
+						arrayOfObj = arr.map(function(d,i){
 			  return{
 			    label:d,
+			    new_lable:o_arr[i],
 			    data: valueArr[i]||0
 			  };
 			});
@@ -111,15 +109,16 @@ function getApi(category){
 			
 			newArr = [];
 			newValue = [];
-			
+			new_O_Arr = [];
 			sortedArrayOfObj.forEach(function(d){
 			  newArr.push(d.label);
 			  newValue.push(d.data);
+			  new_O_Arr.push(d.new_lable);
 			});
 			
-			
-			chart2.data.labels = arr;
-			chart2.data.datasets[0].data = valueArr; 
+			chart2.data.datasets[0].dummy = ['(keyword::/"내구성-추천"/"내구성")',category,new_O_Arr];
+			chart2.data.labels = newArr;
+			chart2.data.datasets[0].data = newValue; 
 			chart2.update();			
 			
 		}
@@ -144,12 +143,10 @@ function getApi(category){
 			var titleDesign = document.getElementById("titleDesign");
 			var img_id = document.getElementById("design_img");
 			getTitle(titleDesign,valueArr,arr,img_id);
-			chart3.data.datasets[0].dummy = ['(keyword::/"디자인-추천"/"디자인")',category,o_arr];
-	        chart3.update();
-	        
-			arrayOfObj = arr.map(function(d,i){
+	        			arrayOfObj = arr.map(function(d,i){
 			  return{
 			    label:d,
+			    new_lable:o_arr[i],
 			    data: valueArr[i]||0
 			  };
 			});
@@ -160,15 +157,16 @@ function getApi(category){
 			
 			newArr = [];
 			newValue = [];
-			
+			new_O_Arr = [];
 			sortedArrayOfObj.forEach(function(d){
 			  newArr.push(d.label);
 			  newValue.push(d.data);
+			  new_O_Arr.push(d.new_lable);
 			});
 			
-			
-			chart3.data.labels = arr;
-			chart3.data.datasets[0].data = valueArr; 
+			chart3.data.datasets[0].dummy = ['(keyword::/"디자인-추천"/"디자인")',category,new_O_Arr];
+			chart3.data.labels = newArr;
+			chart3.data.datasets[0].data = newValue; 
 			chart3.update();
 		}
 	})
