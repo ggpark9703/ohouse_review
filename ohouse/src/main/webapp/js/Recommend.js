@@ -18,7 +18,7 @@ $(document).ready(function(){
 
 
 function getApi(category){
-		$('#text-animation').text(category);
+		$('#text-animation').text('#'+category);
 		console.log(chart1.data)
 		var wrapper = document.getElementsByClassName("text-animation")[0];
 		wrapper.style.opacity="1";
@@ -49,12 +49,33 @@ function getApi(category){
 			var priceTitle = document.getElementById("titlePrice");
 			var img_id = document.getElementById("product_img");
 			getTitle(priceTitle,valueArr,arr,img_id);
-			chart1.data.datasets[0].data = valueArr;
-			chart1.data.labels = arr;
 			chart1.data.datasets[0].label = ['(keyword::/"가격-긍정"/"가격")',category,o_arr];
 			chart1.update();
-			 
-		}
+			
+			arrayOfObj = arr.map(function(d,i){
+			  return{
+			    label:d,
+			    data: valueArr[i]||0
+			  };
+			});
+			
+			sortedArrayOfObj = arrayOfObj.sort(function(a,b){
+			  return b.data-a.data;
+			});
+			
+			newArr = [];
+			newValue = [];
+			
+			sortedArrayOfObj.forEach(function(d){
+			  newArr.push(d.label);
+			  newValue.push(d.data);
+			});
+			
+			
+			chart1.data.labels = newArr;
+			chart1.data.datasets[0].data = newValue; 
+			chart1.update();
+					}
 	})
 	$.ajax({
 		type: "GET",
@@ -76,11 +97,31 @@ function getApi(category){
 			var titleDurablity = document.getElementById("titleDurablity");
 			var img_id = document.getElementById("durablity_img");
 			getTitle(titleDurablity,valueArr,arr,img_id);
-			chart2.data.labels = arr;
-			chart2.data.datasets[0].data = valueArr;
 			chart2.data.datasets[0].label = ['(keyword::/"내구성-추천"/"내구성")',category,o_arr];
 			chart2.update();
+			arrayOfObj = arr.map(function(d,i){
+			  return{
+			    label:d,
+			    data: valueArr[i]||0
+			  };
+			});
 			
+			sortedArrayOfObj = arrayOfObj.sort(function(a,b){
+			  return b.data-a.data;
+			});
+			
+			newArr = [];
+			newValue = [];
+			
+			sortedArrayOfObj.forEach(function(d){
+			  newArr.push(d.label);
+			  newValue.push(d.data);
+			});
+			
+			
+			chart2.data.labels = newArr;
+			chart2.data.datasets[0].data = newValue; 
+			chart2.update();			
 			
 		}
 	})
@@ -104,10 +145,32 @@ function getApi(category){
 			var titleDesign = document.getElementById("titleDesign");
 			var img_id = document.getElementById("design_img");
 			getTitle(titleDesign,valueArr,arr,img_id);
-			chart3.data.labels = arr;
-			chart3.data.datasets[0].data = valueArr;
 			chart3.data.datasets[0].label = ['(keyword::/"디자인-추천"/"디자인")',category,o_arr];
 	        chart3.update();
+	        
+			arrayOfObj = arr.map(function(d,i){
+			  return{
+			    label:d,
+			    data: valueArr[i]||0
+			  };
+			});
+			
+			sortedArrayOfObj = arrayOfObj.sort(function(a,b){
+			  return b.data-a.data;
+			});
+			
+			newArr = [];
+			newValue = [];
+			
+			sortedArrayOfObj.forEach(function(d){
+			  newArr.push(d.label);
+			  newValue.push(d.data);
+			});
+			
+			
+			chart3.data.labels = newArr;
+			chart3.data.datasets[0].data = newValue; 
+			chart3.update();
 		}
 	})
 }
@@ -135,7 +198,7 @@ function getChart(context){
                             data: [],
                             backgroundColor: [
                                 //색상
-                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(255, 99, 132, 1)',
                                 'rgba(54, 162, 235, 0.2)',
                                 'rgba(255, 206, 86, 0.2)',
                                 'rgba(75, 192, 192, 0.2)',
@@ -154,7 +217,21 @@ function getChart(context){
                     ]
                 },
                 options: {
-	
+
+					
+					scales: {
+			            yAxes: [{
+			                ticks: {
+			                    beginAtZero:true,
+			                    fontColor: 'red'
+			                },
+			            }],
+			          xAxes: [{
+			                ticks: {
+			                    fontColor: 'green'
+			                },
+			            }]
+			        } ,
 					onClick: function(evt, element) {
 					        if(element.length > 0) {
 					            var chart_idx = element[0].index;
@@ -194,8 +271,20 @@ function getChart(context){
 					        }},
                     plugins: {
                         legend: {
-                            display: false
-                        }
+                            display: false,
+                            labels: {
+							
+							}
+                        },
+                        
+				      tooltip: {
+				        
+				        callbacks:{
+							label: function(tooltipItem){
+								return tooltipItem.yLabel
+							}					
+						}
+				      },                                             
                    	},
                    	indexAxis: 'y',
                    	          	

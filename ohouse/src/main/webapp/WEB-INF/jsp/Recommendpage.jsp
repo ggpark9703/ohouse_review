@@ -13,13 +13,13 @@
 <body>
 <div class="space_text">
   <div class="text-animation" id="text-animation">
-    매트리스
+    d
   </div>
 </div>
  <div class="card-wrapper">
 	   <div class="card">
 	      <div class="card-body">
-	         <h5 class="subtitle">❝가성비 좋은❞</h5>
+	         <h5 class="subtitle">#가성비</h5>
 	      	    <img class="card-img-top" id="product_img" src="" alt="Card image cap">
 	        <h5 class="card-title" id="titlePrice"></h5>
 	         <div style="width: 100%; height: 100%;">
@@ -30,7 +30,7 @@
 	  <span class="vs">vs</span>
 	   <div class="card">
 	      <div class="card-body">
-	      	<h5 class="subtitle">❝내구성 튼튼한❞</h5>
+	      	<h5 class="subtitle">#내구성</h5>
 	      	    <img class="card-img-top" id="durablity_img" src="" alt="Card image cap">
 	        <h5 class="card-title" id="titleDurablity">Special title treatment</h5>
 	         <div style="width: 100%; height: 100%;">
@@ -41,7 +41,7 @@
 	 <span class="vs">vs</span>
 	   <div class="card">
 	      <div class="card-body">
-	     	 <h4 class="subtitle">❝디자인이 이쁜❞</h4>
+	     	 <h4 class="subtitle">#디자인</h4>
 	      	    <img class="card-img-top" id="design_img" src="" alt="Card image cap">
 	        <h5 class="card-title" id="titleDesign">Special title treatment</h5>
 	         <div style="width: 100%; height: 100%;">

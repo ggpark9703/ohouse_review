@@ -21,16 +21,16 @@
 	width:250px;
 	border-radius: 70%;
 	overflow: hidden;
-	margin-top:-200px;
-	margin-right:240px;
+	margin-top:-180px;
+	margin-right:200px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .card-wrapper{
-	padding-top: 70px;
+	padding-top: 110px;
 	text-align: center;
 }
 .subtitle{
-		font-size: 23pt;
+	font-size: 23pt;
 	font-family: 'OTWelcomeBA';
 	margin-left: 300px;
 	margin-top:0px;
@@ -200,7 +200,7 @@
 
 .space_text{
 	position: relative;
-	left:30px;
+	text-align: center;
 }
 .text-animation {
   color:black;
@@ -212,7 +212,7 @@
   font-family: 'OTWelcomeBA';
   font-size:40px;
   font-weight:600;
-  color:black;
+  color: rgba(58, 133, 191, 0.7);
   opacity:0;
   text-transform:uppercase;
   animation:fade 600ms ease-in-out forwards;

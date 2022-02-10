@@ -14,6 +14,7 @@
     
     <!-- Stylesheets-->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300i,400,400i,700%7CMontserrat:400,500,600,700%7CPlayfair+Display:400,700,700i%7COswald:400,700,700i">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/styles.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/fonts.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
