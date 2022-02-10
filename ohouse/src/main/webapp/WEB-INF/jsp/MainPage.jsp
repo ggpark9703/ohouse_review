@@ -33,7 +33,7 @@
               <div class="col-sm-10 col-lg-8 col-xl-7">
                 <h1 class="heading-decorate" data-caption-animate="fadeInUp" data-caption-delay="100">가장 <span class="text-primary">가성비</span>좋은 <br><span class="divider"></span>가구를 원한다면?
                 </h1>
-                <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="250">#가성비_갑 #합리적_소비 #착한가격</p>
+                <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="250">#가성비_갑 #합리적_소비 #착한가격</p><a class="button button-default-outline" data-caption-animate="fadeInUp" data-caption-delay="450" onclick="ajaxTest('/recommend')">Go Now</a>
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@
               <div class="col-md-10 col-lg-8 col-xl-7">
                 <h1 class="heading-decorate" data-caption-animate="fadeInUp" data-caption-delay="100">가장 <span class="text-primary">튼튼</span>한 <br><span class="divider"></span>가구를 원한다면?
                 </h1>
-                <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="250">#내구성_만점 #튼튼 #탄탄 #짱짱</p>
+                <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="250">#내구성_만점 #튼튼 #탄탄 #짱짱</p><a class="button button-default-outline" data-caption-animate="fadeInUp" data-caption-delay="450" onclick="ajaxTest('/recommend')">Go Now</a>
               </div>
             </div>
           </div>
@@ -63,7 +63,7 @@
               <div class="col-md-10 col-lg-8 col-xl-7">
                 <h1 class="heading-decorate" data-caption-animate="fadeInUp" data-caption-delay="100">가장 <span class="text-primary">예뻐</span>보이는 <br><span class="divider"></span>가구를 원한다면?
                 </h1>
-                <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="250">#디자인_최고 #분위기_끝판왕 #색감_깡패</p>
+                <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="250">#디자인_최고 #분위기_끝판왕 #색감_깡패</p><a class="button button-default-outline" data-caption-animate="fadeInUp" data-caption-delay="450" onclick="ajaxTest('/recommend')">Go Now</a>
               </div>
             </div>
           </div>
@@ -105,6 +105,32 @@
       </svg>
     </div>
   </section>
+  
+  <section class="section section-lg bg-gray-100">
+   <div class="container">
+     <div class="row row-50 align-items-lg-center justify-content-xl-between">
+       <div class="col-lg-6">
+         <div class="box-images">
+           <div class="box-images-item box-images-1" data-parallax-scroll="{&quot;y&quot;: 20, &quot;x&quot;: 30,  &quot;smoothness&quot;: 30 }"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/162683824477008052.jpg?gif=1&w=640&h=640&c=c" alt="" width="282" height="282"/>
+           </div>
+           <div class="box-images-item box-images-2" data-parallax-scroll="{&quot;y&quot;: 20,  &quot;smoothness&quot;: 30 }"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/163826557174187513.png?gif=1&w=640&h=640&c=c" alt="" width="240" height="369"/>
+           </div>
+           <div class="box-images-item box-images-3" data-parallax-scroll="{&quot;y&quot;: 20, &quot;x&quot;: -30, &quot;smoothness&quot;: 30 }"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/163875327222440461.jpg?gif=1&w=640&h=640&c=c" alt="" width="259" height="369"/>
+           </div>
+           <div class="box-images-item box-images-4" data-parallax-scroll="{&quot;y&quot;: -20,  &quot;smoothness&quot;: 30 }"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/162675561580408252.jpg?gif=1&w=640&h=640&c=c" alt="" width="266" height="266"/>
+           </div>
+         </div>
+       </div>
+       <div class="col-lg-6 col-xl-5">
+         <h2 class="heading-decorate"></span>당신을 위한 <span class="text-primary">오늘의 </span><br><span class="divider"></span><span class="text-primary">집</span>중 분석
+         </h2>
+         <p class="big text-gray-800">엉망으로 섞여있던 리뷰들을 당신이 궁금해할 키워드들에 맞춰 정리해뒀어요.</p>
+         <p class="text-spacing-60">#당신의 #당신에_의한 #당신을_위한 #맞춤_리뷰</p><a class="button button-default-outline" type="button" onclick="ajaxTest('/keyword')">Go Now</a>
+       </div>
+     </div>
+   </div>
+ </section>
+
   
   	<!-- java script -->
     <script src="<%=request.getContextPath()%>/js/core.min.js"></script>
