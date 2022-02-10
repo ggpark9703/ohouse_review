@@ -56,7 +56,6 @@ public class SearchServiceImpl implements SearchService {
 				+ "&query=(((*%3A*)%20AND%20"+product_keyword+")"
 				+ "%20AND%20(keyword%3A%3A%2F%22product_category%22%2F"+product_category+"))"
 				+ "%20AND%20(keyword%3A%3A%2F%22product_title%22%2F%22"+product_name+"%22)";
-		System.out.println(myURL);
 		try {
 			URL url = new URL(myURL);
 			urlConn = url.openConnection();

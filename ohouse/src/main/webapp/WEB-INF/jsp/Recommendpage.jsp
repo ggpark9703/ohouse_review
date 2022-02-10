@@ -13,37 +13,68 @@
 <body>
 <div class="space_text">
   <div class="text-animation" id="text-animation">
-    d
   </div>
 </div>
  <div class="card-wrapper">
 	   <div class="card">
 	      <div class="card-body">
-	         <h5 class="subtitle">#가성비</h5>
+	      	 <div class="slide-effect">
+	      	 	<div class="slideUp">
+		          <h5 class="subtitle">#가성비</h5>
+		          <span class="subtitle-hash">#가격이 저렴해요<br>#가격대비 좋아요<br>#가성비 좋아요<br>#착한 가격</span>
+		     	</div>
+	         </div>
+			  <div class="slide-effect" id="action_price_img">
+	      	 	<div class="slideUp">
 	      	    <img class="card-img-top" id="product_img" src="" alt="Card image cap">
-	        <h5 class="card-title" id="titlePrice"></h5>
+	      	    </div>
+	      	  </div>
+	        <div class="slide-effect" id="action_price">
+	        <div class="slideUp"><h5 class="card-title" id="titlePrice"></h5></div>
+	        </div>
 	         <div style="width: 100%; height: 100%;">
 		       <canvas id="priceChart"></canvas>
 	         </div>
 	      </div>
 	   </div>
-	  <span class="vs">vs</span>
 	   <div class="card">
 	      <div class="card-body">
-	      	<h5 class="subtitle">#내구성</h5>
-	      	    <img class="card-img-top" id="durablity_img" src="" alt="Card image cap">
-	        <h5 class="card-title" id="titleDurablity">Special title treatment</h5>
+	      	 <div class="slide-effect">
+	      	 	<div class="slideUp">	      
+			      	<h5 class="subtitle">#내구성</h5>
+			      	<span class="subtitle-hash">#내구성 좋은 <br>#튼튼해요<br>#견고해요<br></span>
+			     </div>
+			  </div>
+			  <div class="slide-effect" id="action_durablity_img">
+	      	 	<div class="slideUp">	
+	      	     <img class="card-img-top" id="durablity_img" src="" alt="Card image cap">
+	      	    </div>
+			  </div>
+	        	        <div class="slide-effect" id="action_durablity">
+	        <div class="slideUp"><h5 class="card-title" id="titleDurablity"></h5></div>
+	        </div>
 	         <div style="width: 100%; height: 100%;">
 		       <canvas id="durablityChart"></canvas>
 	         </div>
 	      </div>
 	   </div>
-	 <span class="vs">vs</span>
 	   <div class="card">
 	      <div class="card-body">
-	     	 <h4 class="subtitle">#디자인</h4>
+	      	 <div class="slide-effect">
+	      	 	<div class="slideUp">	 
+		     	 <h4 class="subtitle">#디자인</h4>
+		     	 <span class="subtitle-hash">#디자인 이뻐요<br>#깔끔한 디자인<br>#내가 원하던 감성<br>#분위기 있어요</span>
+		     	</div>
+		     </div>
+			  <div class="slide-effect" id="action_design_img">
+	      	 	<div class="slideUp">
 	      	    <img class="card-img-top" id="design_img" src="" alt="Card image cap">
-	        <h5 class="card-title" id="titleDesign">Special title treatment</h5>
+	      	    </div>
+	      	   </div>
+	        <div class="slide-effect" id="action_design">
+	        <div class="slideUp"><h5 class="card-title" id="titleDesign"></h5></div>
+	        </div>
+
 	         <div style="width: 100%; height: 100%;">
 		       <canvas id="designChart"></canvas>
 	         </div>
@@ -77,7 +108,7 @@
       <button type="button" class="btn btn-primary" id="sofa" >🛋️ 소파</button>
       <button type="button" class="btn btn-primary" id="hangger"  >👔 행거</button>
       <button type="button" class="btn btn-primary" id="table" >🧇 식탁</button>
-
+		
     </nav>  
 <script type="text/javascript" src = "<%=request.getContextPath()%>/js/Recommend.js"></script>
 </body>

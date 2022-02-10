@@ -23,7 +23,6 @@ function getApi(category){
 		var wrapper = document.getElementsByClassName("text-animation")[0];
 		wrapper.style.opacity="1";
 		wrapper.innerHTML = wrapper.textContent.replace(/./g,"<span>$&</span>");
-		
 		var spans = wrapper.getElementsByTagName("span");
 		
 		for(var i=0;i<spans.length;i++){
@@ -34,6 +33,7 @@ function getApi(category){
 		url: "/api",
 		data: {category:encodeURIComponent(category),filter:encodeURIComponent('(keyword::/"가격-긍정"/"가격")')},
 		success: function(response){
+			refreshAnimation();
 			var arr = new Array();
 			var o_arr = new Array();
             var valueArr = new Array();
@@ -49,7 +49,7 @@ function getApi(category){
 			var priceTitle = document.getElementById("titlePrice");
 			var img_id = document.getElementById("product_img");
 			getTitle(priceTitle,valueArr,arr,img_id);
-			chart1.data.datasets[0].label = ['(keyword::/"가격-긍정"/"가격")',category,o_arr];
+			chart1.data.datasets[0].dummy = ['(keyword::/"가격-긍정"/"가격")',category,o_arr];
 			chart1.update();
 			
 			arrayOfObj = arr.map(function(d,i){
@@ -93,11 +93,10 @@ function getApi(category){
 				arr[idx] = Json[idx]['label'].replace(/\([^)]*\)/,"").replace(/\d{0,4}(colors|GG132C)$/,"").replace(/\[(.*?)\]/,"");
 				valueArr[idx] = Json[idx]['es_property'][0]['value']
 			}
-			
 			var titleDurablity = document.getElementById("titleDurablity");
 			var img_id = document.getElementById("durablity_img");
 			getTitle(titleDurablity,valueArr,arr,img_id);
-			chart2.data.datasets[0].label = ['(keyword::/"내구성-추천"/"내구성")',category,o_arr];
+			chart2.data.datasets[0].dummy = ['(keyword::/"내구성-추천"/"내구성")',category,o_arr];
 			chart2.update();
 			arrayOfObj = arr.map(function(d,i){
 			  return{
@@ -145,7 +144,7 @@ function getApi(category){
 			var titleDesign = document.getElementById("titleDesign");
 			var img_id = document.getElementById("design_img");
 			getTitle(titleDesign,valueArr,arr,img_id);
-			chart3.data.datasets[0].label = ['(keyword::/"디자인-추천"/"디자인")',category,o_arr];
+			chart3.data.datasets[0].dummy = ['(keyword::/"디자인-추천"/"디자인")',category,o_arr];
 	        chart3.update();
 	        
 			arrayOfObj = arr.map(function(d,i){
@@ -193,6 +192,7 @@ function getChart(context){
                     labels:[0,1,2,3,4,5],
                     datasets: [
                         { //데이터
+                        	dummy: '',
                             label: '',
                             fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
                             data: [],
@@ -212,7 +212,8 @@ function getChart(context){
                                 'rgba(75, 192, 192, 1)',
                                 'rgba(153, 102, 255, 1)'
                             ],
-                            borderWidth: 1 //경계선 굵기
+                            borderWidth: 1,//경계선 굵기,
+                            borderRadius: 5
                         }
                     ]
                 },
@@ -236,9 +237,9 @@ function getChart(context){
 					        if(element.length > 0) {
 					            var chart_idx = element[0].index;
 					           
-					            var product_name = myBarChart.data.datasets[0].label[2][chart_idx];
-					            var product_category = myBarChart.data.datasets[0].label[1];
-					            var product_keyword = myBarChart.data.datasets[0].label[0];
+					            var product_name = myBarChart.data.datasets[0].dummy[2][chart_idx];
+					            var product_category = myBarChart.data.datasets[0].dummy[1];
+					            var product_keyword = myBarChart.data.datasets[0].dummy[0];
 					            
 					    		$(document).ready(function(){
 									$('#sampleModal').modal();
@@ -280,10 +281,7 @@ function getChart(context){
 				      tooltip: {
 				        
 				        callbacks:{
-					        label: function(tooltipItem,data) {
-								console.log(data+'hello');
-					         
-					        },							
+						
 						}
 				      },                                             
                    	},
@@ -294,7 +292,20 @@ function getChart(context){
             });
       return myBarChart;
 }
-
+function refreshAnimation(){
+		$('#action_price_img').removeClass('slideUp');
+        $('#action_price_img').addClass('slideUp').html($('#action_price_img').html());	
+		$('#action_durablity_img').removeClass('slideUp');
+        $('#action_durablity_img').addClass('slideUp').html($('#action_durablity_img').html());
+        $('#action_design_img').removeClass('slideUp');
+        $('#action_design_img').addClass('slideUp').html($('#action_design_img').html());
+        $('#action_price').removeClass('slideUp');
+        $('#action_price').addClass('slideUp').html($('#action_price').html());	
+		$('#action_durablity').removeClass('slideUp');
+        $('#action_durablity').addClass('slideUp').html($('#action_durablity').html());
+        $('#action_design').removeClass('slideUp');
+        $('#action_design').addClass('slideUp').html($('#action_design').html());	
+}
 
 //버튼 디자인용 JS
 var element = document.getElementById('mattress');
