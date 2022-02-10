@@ -72,8 +72,8 @@ function getApi(category){
 			});
 			
 			
-			chart1.data.labels = newArr;
-			chart1.data.datasets[0].data = newValue; 
+			chart1.data.labels = arr;
+			chart1.data.datasets[0].data = valueArr; 
 			chart1.update();
 					}
 	})
@@ -118,8 +118,8 @@ function getApi(category){
 			});
 			
 			
-			chart2.data.labels = newArr;
-			chart2.data.datasets[0].data = newValue; 
+			chart2.data.labels = arr;
+			chart2.data.datasets[0].data = valueArr; 
 			chart2.update();			
 			
 		}
@@ -167,8 +167,8 @@ function getApi(category){
 			});
 			
 			
-			chart3.data.labels = newArr;
-			chart3.data.datasets[0].data = newValue; 
+			chart3.data.labels = arr;
+			chart3.data.datasets[0].data = valueArr; 
 			chart3.update();
 		}
 	})
@@ -221,18 +221,12 @@ function getChart(context){
 
 					
 					scales: {
-			            yAxes: [{
-			                ticks: {
-			                    beginAtZero:true,
-			                    fontColor: 'red'
-			                },
-			            }],
-			          xAxes: [{
-			                ticks: {
-			                    fontColor: 'green'
-			                },
-			            }]
-			        } ,
+				      y: {
+            ticks: {
+                fontSize: 40
+            }
+				      }
+				    },
 					onClick: function(evt, element) {
 					        if(element.length > 0) {
 					            var chart_idx = element[0].index;
