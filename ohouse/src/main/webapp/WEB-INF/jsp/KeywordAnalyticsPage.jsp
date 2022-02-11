@@ -15,11 +15,34 @@
               border-radius: 5px 5px 5px 5px;
               font-size: 0.8em;
               margin: 10px;
-               padding: 10px;
+              padding: 10px;
          }
         .bld {
               font-weight: bold;
          }
+         .click-only-text {
+     	 cursor: pointer;
+     	 -webkit-user-select: none;
+    	 -moz-user-select: none;
+   	  	 -ms-user-select: none;
+     	 user-select: none;
+    	}
+  .click-only-text::selection {
+      background: none;
+    }
+
+  .word-default {
+      fill: cadetblue;
+      font-weight: normal;
+    }
+  .word-hovered {
+      fill: teal;
+      font-weight: bold;
+    }
+  .word-selected {
+      fill: darkslategrey;
+      font-weight: bold;
+    }
         </style>
 
 </head>
@@ -28,8 +51,6 @@
 <script>
 	//임시데이터
 	var test = [{"label":"품질","value":40},{"label":"가성비","value":15},{"label":"조립","value":10},{"label":"코트","value":35},{"label":"부피","value":30},{"label":"튼튼","value":20}];
-
-
 <!--	Json 파싱 부분
 
 		var x =
@@ -76,7 +97,28 @@
                 .attr("transform", function(d) {
                     return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
                 })
-                .text(function(d) { return d.label; });
+                .text(function(d) { return d.label; })
+                .classed("click-only-text", true)
+        		.classed("word-default", true)
+       			.on("mouseover", handleMouseOver)
+       			.on("mouseout", handleMouseOut)
+        		.on("click", handleClick);
+        
+        function handleMouseOver(d, i) {
+            d3.select(this)
+              .classed("word-hovered", true)
+              .attr("font-weight", "bold");
+          }
+          
+          function handleMouseOut(d, i) {
+            d3.select(this)
+              .classed("word-hovered", false)
+          }
+          
+          function handleClick(d, i) {
+            var e = d3.select(this);
+            displaySelection.text("${e.text()}");
+          }
     }
     
 </script>       
