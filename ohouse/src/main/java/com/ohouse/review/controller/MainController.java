@@ -15,7 +15,7 @@ public class MainController {
 	}
 	@RequestMapping("/keyword")
 	public String KeywordPage(HttpServletRequest request,HttpServletResponse response) {
-		return "KewordAnalyticsPage";
+		return "KeywordAnalyticsPage";
 	}
 	@RequestMapping("/recommend")
 	public String RecommendPage(HttpServletRequest request,HttpServletResponse response) {
