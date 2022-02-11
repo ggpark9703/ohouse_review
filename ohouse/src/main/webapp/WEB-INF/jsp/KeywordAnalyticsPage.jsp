@@ -2,9 +2,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js" type="text/JavaScript"></script>
 
        <style>
          body {
@@ -69,7 +66,8 @@
 			}
 	    }
 		}).responseText;
--->        
+-->
+
     var color = d3.scale.linear() //선형적인 스케일로 표준화를 시킨다.
             .domain([0,1,2,3,4,5,6,10,15,20,100])//데이터의 범위, 입력 크기
             .range([0.50]);//표시할 범위, 출력 크기
