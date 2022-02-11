@@ -17,9 +17,7 @@ public class KeywordServiceImpl implements KeywordService {
 		URLConnection urlConn = null;
 		InputStreamReader in = null;
 		
-		//서비스 작동안해서 URL 수정
-		
-		// product 媛믩쭔 �엯�젰
+		// product 
 		String myURL = "http://10.10.0.4:8393/api/v10/search/facet?collection=T1_OZIP2022&output=application/json&facet={%22namespace%22:%22keyword%22,%22count%22:%22100%22,%22id%22:%22$._word%22}&query=(keyword%3A%3A%2F%22product_title%22%2F"+product+")";
 		
 		try {
@@ -47,13 +45,16 @@ public class KeywordServiceImpl implements KeywordService {
 	}
 
 	@Override
-	public String getReviewData(String label,String text) {
+	public String getReviewData(String product_keyword,String product_category, String product_name)  {
 		StringBuilder sb = new StringBuilder();
 		URLConnection urlConn = null;
 		InputStreamReader in = null;
 		
-		//�빆紐� 蹂� 由щ럭�뜲�씠�꽣
-		String myURL = "";
+		String myURL = "http://10.10.0.4:8393/api/v10/search?results=100"
+				+ "&collection=T1_OZIP2022&output=application/json"
+				+ "&query=(((*%3A*)%20AND%20"+product_keyword+")"
+				+ "%20AND%20(keyword%3A%3A%2F%22product_category%22%2F"+product_category+"))"
+				+ "%20AND%20(keyword%3A%3A%2F%22product_title%22%2F%22"+product_name+"%22)";
 		
 		try {
 			URL url = new URL(myURL);
@@ -80,5 +81,6 @@ public class KeywordServiceImpl implements KeywordService {
 		String decode = sb.toString();
 		return decode;
 	}
-
+	
+	
 }

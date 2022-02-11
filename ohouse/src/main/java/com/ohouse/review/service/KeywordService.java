@@ -4,6 +4,8 @@ public interface KeywordService {
 
 	String getWords(String product);
 	
-	String getReviewData(String label,String text);
+	String getReviewData(String product_keyword,String product_category, String product_name);
+	
+	
 	
 }
