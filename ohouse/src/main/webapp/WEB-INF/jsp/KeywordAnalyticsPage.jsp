@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
+<head>
        <style>
          body {
          font-family:"Lucida Grande","Droid Sans",Arial,Helvetica,sans-serif;
@@ -45,34 +45,36 @@
 </head>
 <body>
      <div id="wordcloud" align="center" ></div>
-<script>
+     <button id="button1" onclick="button1_click();">버튼1</button>
+<script type="text/javascript">
 	//임시데이터
 	var test = [{"label":"품질","value":40},{"label":"가성비","value":15},{"label":"조립","value":10},{"label":"코트","value":35},{"label":"부피","value":30},{"label":"튼튼","value":20}];
-<!--	Json 파싱 부분
 
-		var x =
+	var x =
 		$.ajax({
 		type: "GET",
-	    url: "wordcloud.do",
+	    url: "/wordcloud.do",
 	    dataType: "json",
 	    contentType: "application/json; charset:UTF-8",
 	    success: function(response){
+	    	console.log(response)
 			refreshAnimation();
 			var arr = new Array();
 			var parse = JSON.parse(response);
 			console.log(parse)
-			for (idx in Json){
-					arr[idx] = {"label":Json[idx]['label'], "value":Json[idx]['es_property'][0]['value']};
+			for (idx in parse){
+					arr[idx] = {"label":parse[idx]['label'], "value":parse[idx]['es_property'][0]['value']};
 			}
+			
 	    }
 		}).responseText;
--->
 
+		
     var color = d3.scale.linear() //선형적인 스케일로 표준화를 시킨다.
             .domain([0,1,2,3,4,5,6,10,15,20,100])//데이터의 범위, 입력 크기
             .range([0.50]);//표시할 범위, 출력 크기
             //ex)"#ddd", "#ccc", "#bbb", "#aaa", "#999", "#888", "#777", "#666", "#555", "#444", "#333", "#222"
-  
+  	
     d3.layout.cloud().size([800, 300]) //[width,height]
             .words(test)
             .rotate(0)
@@ -118,6 +120,34 @@
             displaySelection.text("${e.text()}");
           }
     }
-    
+    //데이터 수신 확인용 function()
+    function button1_click() {
+		$.ajax({
+			type: "GET",
+		    url: "/wordcloud.do",
+/* 		    dataType: "json",
+		    contentType: "application/json; charset:UTF-8", */
+		    //임시 데이터 Controller에 파라미터 주입
+		    data: {product:encodeURIComponent('"[5%쿠폰]BRUG 스탠드행거 KS1002/LDR"')},
+		    success: function(response){
+		    	console.log(response)
+				var arr = new Array();
+				var parse = JSON.parse(response);
+				
+				var parse_J = parse['es_apiResponse']['ibmsc_facet']['ibmsc_facetValue'];
+				
+				console.log(parse_J)
+				for (idx in parse_J){
+					/* 	arr[idx] = {"label":parse[idx]['es_apiResponse']['ibmsc_facet'][], "value":parse[idx]['es_property'][0]['value']}; */
+					console.log(parse_J[idx]['weight'])//빈도
+					console.log(parse_J[idx]['label'])//라벨
+				}
+				console.log(arr);
+				
+		    }
+			}).responseText;
+	}    
 </script>       
 </body>
+</html>
+

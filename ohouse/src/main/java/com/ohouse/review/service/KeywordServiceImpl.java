@@ -17,8 +17,10 @@ public class KeywordServiceImpl implements KeywordService {
 		URLConnection urlConn = null;
 		InputStreamReader in = null;
 		
-		// product 값만 입력
-		String myURL = "http://10.10.0.4:8393/api/v10/search/facets?collection=T1_OZIP2022&output=application/json&facet={%22namespace%22:%22keyword%22,%22count%22:%22100%22,%22id%22:%22$._word%22}&query=(keyword::/"+"product_title"+product+")";
+		//서비스 작동안해서 URL 수정
+		
+		// product 媛믩쭔 �엯�젰
+		String myURL = "http://10.10.0.4:8393/api/v10/search/facet?collection=T1_OZIP2022&output=application/json&facet={%22namespace%22:%22keyword%22,%22count%22:%22100%22,%22id%22:%22$._word%22}&query=(keyword%3A%3A%2F%22product_title%22%2F"+product+")";
 		
 		try {
 			URL url = new URL(myURL);
@@ -50,7 +52,7 @@ public class KeywordServiceImpl implements KeywordService {
 		URLConnection urlConn = null;
 		InputStreamReader in = null;
 		
-		//항목 별 리뷰데이터
+		//�빆紐� 蹂� 由щ럭�뜲�씠�꽣
 		String myURL = "";
 		
 		try {
