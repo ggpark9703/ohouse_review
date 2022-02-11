@@ -271,8 +271,13 @@ function getChart(context){
 					                ticks: {
 					                    // Include a dollar sign in the ticks
 					                    callback: function(value, index, ticks) {
-										
-					                      return this.getLabelForValue(value);
+										  var y_label  =  this.getLabelForValue(value)
+										      if(index==0){
+											  y_label = y_label
+											  console.log('ok')
+										      }
+										  
+					                      return y_label;
 					                    },
 										crossAlign: "far",
 											
