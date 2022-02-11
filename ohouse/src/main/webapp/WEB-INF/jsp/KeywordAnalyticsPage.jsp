@@ -3,26 +3,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-       <style>
-         body {
-         font-family:"Lucida Grande","Droid Sans",Arial,Helvetica,sans-serif;
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js" type="text/JavaScript"></script>
+
+<style>        
+   .bld {
+     font-weight: bold;
          }
-        .legend {
-             border: 1px solid #555555;
-              border-radius: 5px 5px 5px 5px;
-              font-size: 0.8em;
-              margin: 10px;
-              padding: 10px;
-         }
-        .bld {
-              font-weight: bold;
-         }
-         .click-only-text {
-     	 cursor: pointer;
-     	 -webkit-user-select: none;
-    	 -moz-user-select: none;
-   	  	 -ms-user-select: none;
-     	 user-select: none;
+   .click-only-text {
+     cursor: pointer;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+   	 -ms-user-select: none;
+      user-select: none;
     	}
   .click-only-text::selection {
       background: none;
@@ -40,45 +34,42 @@
       fill: darkslategrey;
       font-weight: bold;
     }
-        </style>
-
+</style>
 </head>
 <body>
-     <div id="wordcloud" align="center" ></div>
-     <button id="button1" onclick="button1_click();">버튼1</button>
-<script type="text/javascript">
-	//임시데이터
-	var test = [{"label":"품질","value":40},{"label":"가성비","value":15},{"label":"조립","value":10},{"label":"코트","value":35},{"label":"부피","value":30},{"label":"튼튼","value":20}];
 
-	var x =
-		$.ajax({
+<div id="wordcloud" align="center"></div>
+
+<script>
+	$.ajax({
 		type: "GET",
-	    url: "/wordcloud.do",
+	    url: "wordcloud.do",
 	    dataType: "json",
-	    contentType: "application/json; charset:UTF-8",
+	    data: {product:encodeURIComponent('"[5%쿠폰]BRUG 스탠드행거 KS1002/LDR"')},
 	    success: function(response){
+	    	
 	    	console.log(response)
-			refreshAnimation();
-			var arr = new Array();
-			var parse = JSON.parse(response);
-			console.log(parse)
-			for (idx in parse){
-					arr[idx] = {"label":parse[idx]['label'], "value":parse[idx]['es_property'][0]['value']};
+			var arrW = new Array();
+	    	var arrL = new Array();
+			var parse = JSON.parse(response);	
+			var parse_J = parse['es_apiResponse']['ibmsc_facet']['ibmsc_facetValue'];
+			console.log(parse_J)
+			for (idx in parse_J){
+/* 				arr[idx] = {"label":parse_J[idx]['label'], "value":parse_J[idx]['weight']}; */
+				arrW = parse_J[idx]['weight'];//빈도
+				arrL = parse_J[idx]['label'];//라벨
 			}
-			
-	    }
+			console.log(arrW);
+			console.log(arrW);
+			}
 		}).responseText;
-
-		
-    var color = d3.scale.linear() //선형적인 스케일로 표준화를 시킨다.
-            .domain([0,1,2,3,4,5,6,10,15,20,100])//데이터의 범위, 입력 크기
-            .range([0.50]);//표시할 범위, 출력 크기
-            //ex)"#ddd", "#ccc", "#bbb", "#aaa", "#999", "#888", "#777", "#666", "#555", "#444", "#333", "#222"
-  	
+     
+    var color = d3.scale.category20(); //d3 기본제공 컬러파레트
+  
     d3.layout.cloud().size([800, 300]) //[width,height]
-            .words(test)
+            .words(testx)
             .rotate(0)
-            .fontSize(function(d) { return d.value; })
+            .fontSize(function(d) { return d.weight; })
             .on("end", draw)
             .start();
     
@@ -92,7 +83,7 @@
                 .selectAll("text")
                 .data(words)
                 .enter().append("text")
-                .style("font-size", function(d) { return d.value + "px"; })
+                .style("font-size", function(d) { return d.weight + "px"; })
                 .style("fill", function(d, i) { return color(i); })
                 .attr("transform", function(d) {
                     return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
@@ -102,52 +93,72 @@
         		.classed("word-default", true)
        			.on("mouseover", handleMouseOver)
        			.on("mouseout", handleMouseOut)
-        		.on("click", handleClick);
-        
-        function handleMouseOver(d, i) {
-            d3.select(this)
-              .classed("word-hovered", true)
-              .attr("font-weight", "bold");
-          }
-          
-          function handleMouseOut(d, i) {
-            d3.select(this)
-              .classed("word-hovered", false)
-          }
-          
-          function handleClick(d, i) {
-            var e = d3.select(this);
-            displaySelection.text("${e.text()}");
-          }
-    }
-    //데이터 수신 확인용 function()
-    function button1_click() {
-		$.ajax({
-			type: "GET",
-		    url: "/wordcloud.do",
-/* 		    dataType: "json",
-		    contentType: "application/json; charset:UTF-8", */
-		    //임시 데이터 Controller에 파라미터 주입
-		    data: {product:encodeURIComponent('"[5%쿠폰]BRUG 스탠드행거 KS1002/LDR"')},
-		    success: function(response){
-		    	console.log(response)
-				var arr = new Array();
-				var parse = JSON.parse(response);
-				
-				var parse_J = parse['es_apiResponse']['ibmsc_facet']['ibmsc_facetValue'];
-				
-				console.log(parse_J)
-				for (idx in parse_J){
-					/* 	arr[idx] = {"label":parse[idx]['es_apiResponse']['ibmsc_facet'][], "value":parse[idx]['es_property'][0]['value']}; */
-					console.log(parse_J[idx]['weight'])//빈도
-					console.log(parse_J[idx]['label'])//라벨
-				}
-				console.log(arr);
-				
-		    }
-			}).responseText;
-	}    
-</script>       
+        		.on("click", function(evt, element) {
+			        if(element.length > 0) {
+			            var product_name = myBarChart.data.datasets[0].dummy[2][chart_idx];
+			            var product_category = myBarChart.data.datasets[0].dummy[1];
+			            var product_keyword = myBarChart.data.datasets[0].dummy[0];
+			            
+			    		$(document).ready(function(){
+							$('#sampleModal').modal();
+							$('#product-name').text(product_name);
+							$.ajax({
+									type: "GET",
+									url: "/getreview.do",
+									data: {product_category:encodeURIComponent(product_category),product_keyword:encodeURIComponent(product_keyword),
+											product_name:encodeURIComponent(product_name)},
+									success: function(response){
+										$('#reviewdata').empty();
+										var parse0 = JSON.parse(response);
+										var Json = parse0['es_apiResponse']['es_result'];
+										var reviewdata = "";
+											for (idx in Json){
+												
+												var user_name = Json[idx]['es_title'];
+												console.log(user_name);
+												var summury = Json[idx]['es_summary'];
+												reviewdata += '<div class="card2 p-3 mt-2"><div class="d-flex justify-content-between align-items-center"><div class="user d-flex flex-row align-items-center">';
+												reviewdata += '<span><small class="font-weight-bold text-primary">'+user_name+'</small> <small class="font-weight-bold">💬 '+summury+'</small></span> </div>'
+												reviewdata += '</div></div>'
+											}
+					
+									    $('#reviewdata').append(reviewdata);}
+								});
+
+			        })
+			        }})
+        		  function handleMouseOver(d, i) {
+                  d3.select(this)
+                      .classed("word-hovered", true)
+                      .attr("font-weight", "bold");
+                  }
+                  
+                  function handleMouseOut(d, i) {
+                    d3.select(this)
+                      .classed("word-hovered", false)
+                  }
+		}
+    
+    
+</script>
+<!--Bootstrap Modal-->
+   <div class="modal fade" id="sampleModal">
+      <div class="modal-dialog">
+       <div class="modal-content">
+         <!--Modal Header-->   
+           <div class="modal-header">
+           <h5 class="modal-title" id="product-name">Modal Title</h5>
+           </div>
+         <!--Modal Body -->
+          <div class="modal-body" id="reviewdata">
+          </div>
+         <!--Modal Footer-->
+           <div class="modal-footer">
+               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+   </div>
+  </div>
+</div>
+<script type="text/javascript" src = "<%=request.getContextPath()%>/js/KeyWord.js"></script>--> 
 </body>
 </html>
-
