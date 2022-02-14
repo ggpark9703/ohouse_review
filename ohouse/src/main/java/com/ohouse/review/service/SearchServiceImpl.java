@@ -16,7 +16,7 @@ public class SearchServiceImpl implements SearchService {
 		StringBuilder sb = new StringBuilder();
 		URLConnection urlConn = null;
 		InputStreamReader in = null;
-		String myURL = "http://10.10.0.4:8393/api/v10/search/facet?collection=T1_OZIP2022&facet=%7B%22namespace%22%3A%22keyword%22%2C%22count%22%3A%225%22%2C%22id%22%3A%22%24.product_title%22%7D&query="+filter+"AND%20(keyword%3A%3A%2F%22product_category%22%2F%22"+category+"%22)&output=application/json";
+		String myURL = "http://10.33.250.149:8393/api/v10/search/facet?collection=T1_OZIP2022&facet=%7B%22namespace%22%3A%22keyword%22%2C%22count%22%3A%225%22%2C%22id%22%3A%22%24.product_title%22%7D&query="+filter+"AND%20(keyword%3A%3A%2F%22product_category%22%2F%22"+category+"%22)&output=application/json";
 		
 		try {
 			URL url = new URL(myURL);
@@ -51,7 +51,7 @@ public class SearchServiceImpl implements SearchService {
 		StringBuilder sb = new StringBuilder();
 		URLConnection urlConn = null;
 		InputStreamReader in = null;
-		String myURL = "http://10.10.0.4:8393/api/v10/search?results=20"
+		String myURL = "http://10.33.250.149:8393/api/v10/search?results=20"
 				+ "&collection=T1_OZIP2022&output=application/json"
 				+ "&query=(((*%3A*)%20AND%20"+product_keyword+")"
 				+ "%20AND%20(keyword%3A%3A%2F%22product_category%22%2F"+product_category+"))"
