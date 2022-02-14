@@ -15,19 +15,12 @@ public class KAController {
 	private KeywordService keywordService;
 	
 	//키워드 데이터
-	  @RequestMapping(value="/clouddata.do",method = RequestMethod.GET, produces ="application/text; charset=UTF-8") 
+	  @RequestMapping(value="/wpi",method = RequestMethod.GET, produces ="application/text; charset=UTF-8") 
 	  public String wordQuery(@RequestParam("product") String product) { 
 	  String result = keywordService.getWords(product); 
 	  return result;
 	  }
 	  
-	  
-	  //상세 리뷰 데이터
-	  @RequestMapping(value="/getreview.do",method = RequestMethod.GET, produces ="application/text; charset=UTF-8") 
-	  public String getReviewQuery (String product_keyword,String product_category, String product_name) { 
-	  String resultList = keywordService.getReviewData(product_keyword, product_category, product_name);
-	  return resultList; 
-	  }
 	 
 	
 }
