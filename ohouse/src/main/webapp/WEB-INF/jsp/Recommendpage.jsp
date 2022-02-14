@@ -88,9 +88,8 @@
                     <!--Modal Header-->   
                     <div class="modal-header">
                         <h5 class="modal-title" id="product-name">Modal Title</h5>
-                    	
-                    	<button class="btn btn-danger btn-circle btn-circle-sm m-1" data-dismiss="modal"><i class="fa fa-close" style="font-size:24px"></i></button>
-                    </div>
+                        <button class="btn btn-danger btn-circle btn-circle-sm " data-dismiss="modal"><i class="fa fa-close" style="font-size:24px"></i></button>
+             </div>
                     <!--Modal Body -->
                     <div class="modal-body" id="review_data">
                     </div>
@@ -109,7 +108,7 @@
       <button type="button" class="btn btn-primary" id="sofa" >🛋️ 소파</button>
       <button type="button" class="btn btn-primary" id="hangger"  >👔 행거</button>
       <button type="button" class="btn btn-primary" id="table" >🧇 식탁</button>
-		
+	<a href="#" class="icon facebook"><span>해당 상품과 키워드(가성비,내구성,디자인)간의 연관성을 바탕으로 추천도가 측정됩니다.<br><br>차트 항목 클릭 시 관련 리뷰를 확인 할 수 있습니다.</span></a>	
     </nav>  
 <script type="text/javascript" src = "<%=request.getContextPath()%>/js/Recommend.js"></script>
 </body>

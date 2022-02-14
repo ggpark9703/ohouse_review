@@ -371,6 +371,6 @@ $("#table").click(function(){
 	element4.classList.add('active');
 });
 $('#sampleModal').on('shown.bs.modal', function () {
-    $('#review_data').animate({ scrollTop: 0 }, 'slow');
+    $('#review_data').animate({ scrollTop: 0 }, 'fast');
 });
 
