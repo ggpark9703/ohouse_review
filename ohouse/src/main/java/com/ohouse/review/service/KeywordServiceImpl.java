@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class KeywordServiceImpl implements KeywordService {
 	
+	
 	@Override
 	public String getWords(String product) {
 		StringBuilder sb = new StringBuilder();
@@ -18,7 +19,7 @@ public class KeywordServiceImpl implements KeywordService {
 		InputStreamReader in = null;
 		
 		// product 부분을 변수로 받음
-		String myURL = "http://10.33.250.149:8393/api/v10/search/facet?collection=T1_OZIP2022&output=application/json&facet={%22namespace%22:%22keyword%22,%22count%22:%22100%22,%22id%22:%22$._word%22}&query=(keyword%3A%3A%2F%22product_title%22%2F"+product+")";
+		String myURL = "http://10.10.0.4:8393/api/v10/search/facet?collection=T1_OZIP2022&output=application/json&facet={%22namespace%22:%22keyword%22,%22count%22:%22100%22,%22id%22:%22$._word%22}&query=(keyword%3A%3A%2F%22product_title%22%2F"+product+")";
 		
 		try {
 			URL url = new URL(myURL);
