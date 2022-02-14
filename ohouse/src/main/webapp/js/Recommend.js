@@ -13,6 +13,7 @@ var context3 = document.getElementById('designChart').getContext('2d');
 var chart3 = getChart(context3);
 $(document).ready(function(){
  getApi('매트리스')
+ getProduct_Info("편안한 제주 필로우탑 본넬스프링 침대 매트리스")
  $('#cardtop').src='<%=request.getContextPath()%>/img/recommend_img/DK053 3인용 풀커버 패브릭 소파 5colors.png';
 });
 
@@ -175,7 +176,7 @@ function getTitle(query,valueArr,arr,img_id){
 	 const maxValue = Math.max.apply(Math,valueArr)
 		for (idx in valueArr){
 			if(valueArr[idx] == maxValue){
-				
+				getProduct_Info(arr[idx])
 				var product_name=(arr[idx].trim()+".png")
 				console.log(product_name);
 				$(query).text(arr[idx])
@@ -374,3 +375,15 @@ $('#sampleModal').on('shown.bs.modal', function () {
     $('#review_data').animate({ scrollTop: 0 }, 'fast');
 });
 
+function getProduct_Info(product_name){
+		$.ajax({
+				type: "GET",
+				url: "/products",
+				data: {product_name:product_name},
+				success: function(response){
+					console.log(response['product_color']);
+					
+				    
+				}
+			})
+}

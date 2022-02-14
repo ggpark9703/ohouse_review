@@ -21,7 +21,7 @@
 	      	 <div class="slide-effect">
 	      	 	<div class="slideUp">
 		          <h5 class="subtitle">#가성비</h5>
-		          <span class="subtitle-hash">#가격이 저렴해요<br>#가격대비 좋아요<br>#가성비 좋아요<br>#착한 가격</span>
+		          <span class="subtitle-hash">가격:104900<br>색상:화이트+그레이<br>소재:소프트 우레탄폼,하드 우레탄폼</span>
 		     	</div>
 	         </div>
 			  <div class="slide-effect" id="action_price_img">
@@ -42,7 +42,7 @@
 	      	 <div class="slide-effect">
 	      	 	<div class="slideUp">	      
 			      	<h5 class="subtitle">#내구성</h5>
-			      	<span class="subtitle-hash">#내구성 좋은 <br>#튼튼해요<br>#견고해요<br></span>
+			      	<span class="subtitle-hash"></span>
 			     </div>
 			  </div>
 			  <div class="slide-effect" id="action_durablity_img">
@@ -63,7 +63,7 @@
 	      	 <div class="slide-effect">
 	      	 	<div class="slideUp">	 
 		     	 <h4 class="subtitle">#디자인</h4>
-		     	 <span class="subtitle-hash">#디자인 이뻐요<br>#깔끔한 디자인<br>#내가 원하던 감성<br>#분위기 있어요</span>
+		     	 <span class="subtitle-hash"></span>
 		     	</div>
 		     </div>
 			  <div class="slide-effect" id="action_design_img">
