@@ -238,6 +238,7 @@ function getChart(context){
 					            var product_keyword = myBarChart.data.datasets[0].dummy[0];
 					            
 					    		$(document).ready(function(){
+									$('#review_data').scrollTop(0);
 									$('#sampleModal').modal();
 									$('#product-name').text(product_name);
 									$.ajax({
@@ -369,3 +370,7 @@ $("#table").click(function(){
 	element3.classList.remove('active');
 	element4.classList.add('active');
 });
+$('#sampleModal').on('shown.bs.modal', function () {
+    $('#review_data').animate({ scrollTop: 0 }, 'slow');
+});
+

@@ -23,7 +23,9 @@
     font-weight: normal;
     font-style: normal;
 }
-
+.modal-body {
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
 
 .card-img-top{
 	height:210px;
@@ -306,3 +308,12 @@
   }
 }
 
+.btn-circle {
+  position:absolute;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  top:-3px;
+  left:493px;
+  border-radius: 5%;
+}

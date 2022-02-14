@@ -88,13 +88,14 @@
                     <!--Modal Header-->   
                     <div class="modal-header">
                         <h5 class="modal-title" id="product-name">Modal Title</h5>
+                    	
+                    	<button class="btn btn-danger btn-circle btn-circle-sm m-1" data-dismiss="modal"><i class="fa fa-close" style="font-size:24px"></i></button>
                     </div>
                     <!--Modal Body -->
                     <div class="modal-body" id="review_data">
                     </div>
                     <!--Modal Footer-->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
