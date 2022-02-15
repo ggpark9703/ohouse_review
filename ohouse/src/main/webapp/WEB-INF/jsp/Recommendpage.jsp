@@ -21,16 +21,20 @@
 	      	 <div class="slide-effect">
 	      	 	<div class="slideUp">
 		          <h5 class="subtitle">#가성비</h5>
-		          <span class="subtitle-hash">가격:104900<br>색상:화이트+그레이<br>소재:소프트 우레탄폼,하드 우레탄폼</span>
 		     	</div>
 	         </div>
-			  <div class="slide-effect" id="action_price_img">
+<!-- 			  <div class="slide-effect" id="action_price_img">
 	      	 	<div class="slideUp">
 	      	    <img class="card-img-top" id="product_img" src="" alt="Card image cap">
 	      	    </div>
-	      	  </div>
+	      	  </div> -->
 	        <div class="slide-effect" id="action_price">
-	        <div class="slideUp"><h5 class="card-title" id="titlePrice"></h5></div>
+	        <div class="slideUp"><h5 class="card-title" id="titlePrice"></h5>
+	        
+	        
+	        <div class="ratings" id="product_ratings"><i class="fa fa-star rating-color"></i></div>
+	        <div class="product_price" id="product_price1"></div>
+	        </div>
 	        </div>
 	         <div style="width: 100%; height: 100%;">
 		       <canvas id="priceChart"></canvas>
@@ -45,14 +49,18 @@
 			      	<span class="subtitle-hash"></span>
 			     </div>
 			  </div>
-			  <div class="slide-effect" id="action_durablity_img">
+<!-- 			  <div class="slide-effect" id="action_durablity_img">
 	      	 	<div class="slideUp">	
 	      	     <img class="card-img-top" id="durablity_img" src="" alt="Card image cap">
 	      	    </div>
-			  </div>
+			  </div> -->
 	        	        <div class="slide-effect" id="action_durablity">
-	        <div class="slideUp"><h5 class="card-title" id="titleDurablity"></h5></div>
+	        <div class="slideUp"><h5 class="card-title" id="titleDurablity"></h5>
+	 
+	        <div class="ratings" id="product_ratings2"><i class="fa fa-star rating-color"></i></div></div>
+	 		<div class="product_price" id="product_price2"></div>
 	        </div>
+	  
 	         <div style="width: 100%; height: 100%;">
 		       <canvas id="durablityChart"></canvas>
 	         </div>
@@ -66,15 +74,21 @@
 		     	 <span class="subtitle-hash"></span>
 		     	</div>
 		     </div>
-			  <div class="slide-effect" id="action_design_img">
+<!-- 			  <div class="slide-effect" id="action_design_img">
 	      	 	<div class="slideUp">
 	      	    <img class="card-img-top" id="design_img" src="" alt="Card image cap">
 	      	    </div>
-	      	   </div>
+	      	   </div> -->
 	        <div class="slide-effect" id="action_design">
-	        <div class="slideUp"><h5 class="card-title" id="titleDesign"></h5></div>
+	        <div class="slideUp"><h5 class="card-title" id="titleDesign"></h5>
+	        
+	        <div class="ratings" id="product_ratings3"><i class="fa fa-star rating-color"></i></div>
+	        
+	        <div class="product_price" id="product_price3"></div>
+	        
+	        
 	        </div>
-
+	        </div>
 	         <div style="width: 100%; height: 100%;">
 		       <canvas id="designChart"></canvas>
 	         </div>

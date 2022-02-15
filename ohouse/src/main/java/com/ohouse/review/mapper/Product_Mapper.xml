@@ -5,6 +5,6 @@
     <select id="getProductInfo" resultType="hashmap">
         SELECT *
         FROM T1_OHOUSE_PRODUCTINFO
-        WHERE product_title = #{product_title}
+        WHERE product_title LIKE  CONCAT('%',#{product_title},'%')
     </select>
 </mapper>

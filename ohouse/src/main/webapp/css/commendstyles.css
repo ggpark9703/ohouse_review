@@ -26,14 +26,28 @@
 .modal-body {
   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
+.product_info{
+	text-align: left;
+	line-height: 30px;
+	font-size: 23pt;
+	font-family: 'KyoboHandwriting2020A';
+}
+.rating-color {
+    position:absolute;
+    color: #fbc634 !important;
+    font-size: 20pt;
+    right:70px;
+    top:32px;
+}
+
 
 .card-img-top{
 	height:210px;
 	width:210px;
 	border-radius: 10%;
 	overflow: hidden;
-	margin-left:150px;
-	margin-top:-50px;
+	margin-left:300px;
+	margin-top:-350px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .card-wrapper{
@@ -385,7 +399,6 @@ a span {
   transition: all .4s;
   border-radius: 5px;
 }
-
 a span:before {
   content: '';
 /*   width: 0;
@@ -416,3 +429,14 @@ a.facebook span {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
+.review-count {
+    margin-bottom: 2px;
+    font-family: 'OTWelcomeBA';
+    font-size: 20px !important;
+    margin-right:-320px;
+}
+.product_price2{
+	font-family: 'OTWelcomeBA';
+    font-size: 20px !important;
+	text-align: left
+}

@@ -13,12 +13,13 @@ var context3 = document.getElementById('designChart').getContext('2d');
 var chart3 = getChart(context3);
 $(document).ready(function(){
  getApi('매트리스')
- getProduct_Info("편안한 제주 필로우탑 본넬스프링 침대 매트리스")
  $('#cardtop').src='<%=request.getContextPath()%>/img/recommend_img/DK053 3인용 풀커버 패브릭 소파 5colors.png';
 });
 
 
 function getApi(category){
+		$('h5').remove('.review-count');
+		$('h5').remove('.product_price2');
 		$('#text-animation').text('#'+category);
 		console.log(chart1.data)
 		var wrapper = document.getElementsByClassName("text-animation")[0];
@@ -32,7 +33,7 @@ function getApi(category){
 		$.ajax({
 		type: "GET",
 		url: "/api",
-		data: {category:encodeURIComponent(category),filter:encodeURIComponent('(keyword::/"가격-긍정"/"가격")')},
+		data: {category:encodeURIComponent(category),filter:encodeURIComponent('(keyword::/"추천"/"가격")')},
 		success: function(response){
 			refreshAnimation();
 			var arr = new Array();
@@ -46,10 +47,11 @@ function getApi(category){
 				arr[idx] = Json[idx]['label'].replace(/\([^)]*\)/,"").replace(/\d{0,4}(colors|GG132C)$/,"").replace(/\[(.*?)\]/,"");
 				valueArr[idx] = Json[idx]['es_property'][0]['value']
 			}
-		
+			var product_ratings = 'product_ratings';
+			var product_price = 'product_price1';
 			var priceTitle = document.getElementById("titlePrice");
 			var img_id = document.getElementById("product_img");
-			getTitle(priceTitle,valueArr,arr,img_id);
+			getTitle(priceTitle,valueArr,arr,img_id,product_ratings,product_price);
 			arrayOfObj = arr.map(function(d,i){
 			  return{
 			    label:d,
@@ -71,7 +73,7 @@ function getApi(category){
 			  new_O_Arr.push(d.new_lable);
 			});
 			
-			chart1.data.datasets[0].dummy = ['(keyword::/"가격-긍정"/"가격")',category,new_O_Arr];
+			chart1.data.datasets[0].dummy = ['(keyword::/"추천"/"가격")',category,new_O_Arr];
 			chart1.data.labels = newArr;
 			chart1.data.datasets[0].data = newValue; 
 			chart1.update();
@@ -80,7 +82,7 @@ function getApi(category){
 	$.ajax({
 		type: "GET",
 		url: "/api",
-		data: {category:encodeURIComponent(category),filter:encodeURIComponent('(keyword::/"내구성-추천"/"내구성")')},
+		data: {category:encodeURIComponent(category),filter:encodeURIComponent('(keyword::/"추천"/"내구성")')},
 		success: function(response){
 			var parse0 = JSON.parse(response);
 			console.log(parse0)
@@ -93,9 +95,11 @@ function getApi(category){
 				arr[idx] = Json[idx]['label'].replace(/\([^)]*\)/,"").replace(/\d{0,4}(colors|GG132C)$/,"").replace(/\[(.*?)\]/,"");
 				valueArr[idx] = Json[idx]['es_property'][0]['value']
 			}
+			var product_ratings = 'product_ratings2';
+			var product_price = 'product_price2';
 			var titleDurablity = document.getElementById("titleDurablity");
 			var img_id = document.getElementById("durablity_img");
-			getTitle(titleDurablity,valueArr,arr,img_id);
+			getTitle(titleDurablity,valueArr,arr,img_id,product_ratings,product_price);
 						arrayOfObj = arr.map(function(d,i){
 			  return{
 			    label:d,
@@ -117,7 +121,7 @@ function getApi(category){
 			  new_O_Arr.push(d.new_lable);
 			});
 			
-			chart2.data.datasets[0].dummy = ['(keyword::/"내구성-추천"/"내구성")',category,new_O_Arr];
+			chart2.data.datasets[0].dummy = ['(keyword::/"추천"/"내구성")',category,new_O_Arr];
 			chart2.data.labels = newArr;
 			chart2.data.datasets[0].data = newValue; 
 			chart2.update();			
@@ -127,7 +131,7 @@ function getApi(category){
 	$.ajax({
 		type: "GET",
 		url: "/api",
-		data: {category:encodeURIComponent(category),filter:encodeURIComponent('(keyword::/"디자인-추천"/"디자인")')},
+		data: {category:encodeURIComponent(category),filter:encodeURIComponent('(keyword::/"추천"/"디자인")')},
 		success: function(response){
 			var parse0 = JSON.parse(response);
 			console.log(parse0)
@@ -140,10 +144,11 @@ function getApi(category){
 				arr[idx] = Json[idx]['label'].replace(/\([^)]*\)/,"").replace(/\d{0,4}(colors|GG132C)$/,"").replace(/\[(.*?)\]/,"");
 				valueArr[idx] = Json[idx]['es_property'][0]['value']
 			}
-			
+			var design_ratings = 'product_ratings3';
+			var product_price = 'product_price3';
 			var titleDesign = document.getElementById("titleDesign");
 			var img_id = document.getElementById("design_img");
-			getTitle(titleDesign,valueArr,arr,img_id);
+			getTitle(titleDesign,valueArr,arr,img_id,design_ratings,product_price);
 	        			arrayOfObj = arr.map(function(d,i){
 			  return{
 			    label:d,
@@ -165,18 +170,18 @@ function getApi(category){
 			  new_O_Arr.push(d.new_lable);
 			});
 			
-			chart3.data.datasets[0].dummy = ['(keyword::/"디자인-추천"/"디자인")',category,new_O_Arr];
+			chart3.data.datasets[0].dummy = ['(keyword::/"추천"/"디자인")',category,new_O_Arr];
 			chart3.data.labels = newArr;
 			chart3.data.datasets[0].data = newValue; 
 			chart3.update();
 		}
 	})
 }
-function getTitle(query,valueArr,arr,img_id){
+function getTitle(query,valueArr,arr,img_id,product_ratings,product_price){
 	 const maxValue = Math.max.apply(Math,valueArr)
 		for (idx in valueArr){
 			if(valueArr[idx] == maxValue){
-				getProduct_Info(arr[idx])
+				getProduct_Info(arr[idx].trim(),product_ratings,product_price)
 				var product_name=(arr[idx].trim()+".png")
 				console.log(product_name);
 				$(query).text(arr[idx])
@@ -276,7 +281,6 @@ function getChart(context){
 										  var y_label  =  this.getLabelForValue(value)
 										      if(index==0){
 											  y_label = y_label
-											  console.log('ok')
 										      }
 										  
 					                      return y_label;
@@ -375,15 +379,23 @@ $('#sampleModal').on('shown.bs.modal', function () {
     $('#review_data').animate({ scrollTop: 0 }, 'fast');
 });
 
-function getProduct_Info(product_name){
+function getProduct_Info(product_name,product_ratings,product_price){
 		$.ajax({
+
 				type: "GET",
 				url: "/products",
 				data: {product_name:product_name},
 				success: function(response){
 					console.log(response['product_color']);
+					console.log(response['product_star']+'별점');
 					
-				    
+					var stars='<h5 class="review-count">'+response['product_star']+'<h5>';
+					var price = '<h5 class="product_price2">'+'가격: '+response['product_price']+'<h5>';
+					price += '<h5 class="product_price2">'+'색상: '+response['product_color']+'<h5>';
+					price += '<h5 class="product_price2">'+'주 소재: '+response['product_material']+'<h5>';
+					console.log(product_ratings+"속성확인")
+					$('#'+product_ratings).append(stars);
+					$('#'+product_price).append(price);
 				}
 			})
 }
