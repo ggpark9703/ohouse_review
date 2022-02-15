@@ -4,8 +4,9 @@
 <head>
 <meta charset="UTF-8" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/kastyles.css" />
-<script src="http://d3js.org/d3.v4.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js" type="text/JavaScript"></script>
 </head>
 <body>
 <!--WordCloud-->
