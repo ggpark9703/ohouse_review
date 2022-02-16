@@ -21,6 +21,10 @@ public class MainController {
 	public String RecommendPage(HttpServletRequest request,HttpServletResponse response) {
 		return "Recommendpage";
 	}
+	@RequestMapping("/topic")
+	public String TopicPage(HttpServletRequest request,HttpServletResponse response) {
+		return "TopicRecommend";
+	}
 	
 	
 }

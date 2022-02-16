@@ -15,19 +15,40 @@
   <div class="text-animation" id="text-animation">
   </div>
 </div>
- <div class="card-wrapper">
-	   <div class="card">
+<!-- 추천 div -->
+<div class="card-wrapper2" id="div2">
+	   <div class="card" style="width:1400px;height: 700px;" >
+	   	<img class= "main_img" src="" id="main_img" align="left">
+		<div class="card-body">
+		<h5 class="card-title_main" id="all_recommend"></h5>
+		<h5 class="ratings_main" id="rating_price"></h5>
+		<h5 class="ratings_main" id="rating_dur"></h5>
+		<h5 class="ratings_main" id="rating_design"></h5>
+		<h5 class="ratings_main" id="price"></h5>
+		<h5 class="ratings_main" id="colors"></h5>
+		<h5 class="ratings_main" id="material"></h5>
+		<h5 class="ratings_main" ></h5>
+		<div style="width: 55%; " class="totalChart_position">
+		     <canvas id="totalChart"></canvas>
+	    </div>
+		</div>
+	   </div>
+	   
+  </div>
+<!-- 상세 div -->
+ <div class="card-wrapper" id="div1">
+	   <div class="card" style="width:450px;">
 	      <div class="card-body">
 	      	 <div class="slide-effect">
 	      	 	<div class="slideUp">
 		          <h5 class="subtitle">#가성비</h5>
 		     	</div>
 	         </div>
-<!-- 			  <div class="slide-effect" id="action_price_img">
+			  <div class="slide-effect" id="action_price_img">
 	      	 	<div class="slideUp">
 	      	    <img class="card-img-top" id="product_img" src="" alt="Card image cap">
 	      	    </div>
-	      	  </div> -->
+	      	  </div>
 	        <div class="slide-effect" id="action_price">
 	        <div class="slideUp"><h5 class="card-title" id="titlePrice"></h5>
 	        
@@ -41,7 +62,7 @@
 	         </div>
 	      </div>
 	   </div>
-	   <div class="card">
+	   <div class="card" style="width:450px;">
 	      <div class="card-body">
 	      	 <div class="slide-effect">
 	      	 	<div class="slideUp">	      
@@ -49,16 +70,17 @@
 			      	<span class="subtitle-hash"></span>
 			     </div>
 			  </div>
-<!-- 			  <div class="slide-effect" id="action_durablity_img">
+ 			  <div class="slide-effect" id="action_durablity_img">
 	      	 	<div class="slideUp">	
 	      	     <img class="card-img-top" id="durablity_img" src="" alt="Card image cap">
 	      	    </div>
-			  </div> -->
-	        	        <div class="slide-effect" id="action_durablity">
-	        <div class="slideUp"><h5 class="card-title" id="titleDurablity"></h5>
-	 
-	        <div class="ratings" id="product_ratings2"><i class="fa fa-star rating-color"></i></div></div>
-	 		<div class="product_price" id="product_price2"></div>
+			  </div> 
+	        <div class="slide-effect" id="action_durablity">
+	         <div class="slideUp"><h5 class="card-title" id="titleDurablity"></h5>
+	 		<div class="ratings" id="product_ratings2"><i class="fa fa-star rating-color"></i></div>	
+	        	 		<div class="product_price" id="product_price2"></div>
+	        </div>
+	        
 	        </div>
 	  
 	         <div style="width: 100%; height: 100%;">
@@ -66,7 +88,7 @@
 	         </div>
 	      </div>
 	   </div>
-	   <div class="card">
+	   <div class="card" style="width:450px;">
 	      <div class="card-body">
 	      	 <div class="slide-effect">
 	      	 	<div class="slideUp">	 
@@ -74,11 +96,11 @@
 		     	 <span class="subtitle-hash"></span>
 		     	</div>
 		     </div>
-<!-- 			  <div class="slide-effect" id="action_design_img">
+			  <div class="slide-effect" id="action_design_img">
 	      	 	<div class="slideUp">
 	      	    <img class="card-img-top" id="design_img" src="" alt="Card image cap">
 	      	    </div>
-	      	   </div> -->
+	      	   </div>
 	        <div class="slide-effect" id="action_design">
 	        <div class="slideUp"><h5 class="card-title" id="titleDesign"></h5>
 	        
@@ -118,6 +140,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 <i class="bi bi-house-heart-fill"></i>
+	<button type="button" onclick="changeForm();">🛏️ 매트리스</button>
       <button type="button" class="btn btn-primary" id="mattress">🛏️ 매트리스</button>
       <button type="button" class="btn btn-primary" id="sofa" >🛋️ 소파</button>
       <button type="button" class="btn btn-primary" id="hangger"  >👔 행거</button>

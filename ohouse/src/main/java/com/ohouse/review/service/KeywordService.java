@@ -1,6 +1,6 @@
 package com.ohouse.review.service;
 
-import org.json.simple.JSONArray;
+/*import org.json.simple.JSONArray;*/
 
 public interface KeywordService {
 

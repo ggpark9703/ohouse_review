@@ -40,24 +40,30 @@
     top:32px;
 }
 
-
 .card-img-top{
+	position:absolute;
 	height:210px;
 	width:210px;
-	border-radius: 10%;
+	border-radius: 30%;
 	overflow: hidden;
-	margin-left:300px;
-	margin-top:-350px;
+	right:100px;
+	top:-360px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .card-wrapper{
 	text-align: center;
+	padding-top: 150px;
+}
+.card-wrapper2{
+	text-align: center;
+	padding-top: 50px;
 }
 .subtitle{
+	position:absolute;
 	font-size: 23pt;
 	font-family: 'KyoboHandwriting2020A';
 	margin-right: 300px;
-	margin-top:-100px;
+	top:-200px;
 }
 .subtitle span {
   top:10px;
@@ -87,11 +93,26 @@
 	font-family: 'KyoboHandwriting2020A';
 	color: gray;
 }
-.card{
+#div1{
+	display: none;
+	
+}
+.card-contents{
 	width:450px;
 	line-height: 100px;
 	color: black;
-	padding-top: 100px;
+	background-color:black;
+	padding-top: 200px;
+	text-align: center;
+	margin:0 10px;
+	display: inline-block;
+	border-radius: 15px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.card{
+	line-height: 100px;
+	color: black;
+	padding-top: 200px;
 	text-align: center;
 	margin:0 10px;
 	display: inline-block;
@@ -101,9 +122,28 @@
 .card-title{
 	font-size: 17pt;
 	font-family: 'KyoboHandwriting2020A';
-	margin-top:20px;
+	margin-top:-140px;
 	text-align: left;
 }
+.card-title_main{
+	font-size: 17pt;
+	font-family: 'KyoboHandwriting2020A';
+	text-align: right;
+	margin-top:-140px;
+}
+.ratings
+{
+	font-size: 17pt;
+	font-family: 'KyoboHandwriting2020A';
+	text-align: center;	
+}
+.ratings_main
+{
+	font-size: 17pt;
+	font-family: 'KyoboHandwriting2020A';
+	text-align: right;	
+}
+
 
 .navbar.fixed-bottom{
   display: flex;
@@ -111,7 +151,9 @@
   align-items: center;
   padding-left: 100px;
 }
-
+#card-width{
+	width:100px;
+}
 .btn {
   margin-left: 10px;
   margin-right: 10px;
@@ -196,7 +238,7 @@
 }
 
 .font-weight-bold{
-	  font-family: GongGothicMedium;
+  font-family: GongGothicMedium;
   font-size: 12px;
 }
 
@@ -282,7 +324,12 @@
   justify-content: center;
   align-items: center;
 }
-
+.main_img{
+	
+	width:695px;
+	margin-top: -200px;
+	
+}
 .text, .slideDown, .slideUp {
   position: relative;
   font-family: tahoma;
@@ -410,13 +457,21 @@ a span:before {
   bottom: -5px;
   left: 40px;
 }
-
+.totalChart_position{
+	position: absolute;
+	top:300px;
+	left:600px;
+}
 a:hover span {
   bottom: 50px;
   visibility: visible;
   opacity: 1;
 }
 
+.totalChart{
+	position: absolute;
+	left:100px;
+}
 
 /* Hover through the icons */
 
@@ -436,7 +491,12 @@ a.facebook span {
     margin-right:-320px;
 }
 .product_price2{
-	font-family: 'OTWelcomeBA';
-    font-size: 20px !important;
+	font-size: 15pt;
+	font-family: 'KyoboHandwriting2020A';
 	text-align: left
+}
+.rating-money{
+	color: #FE2E64;
+	position: absolute;
+	left:10px;
 }
