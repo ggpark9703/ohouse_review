@@ -10,7 +10,6 @@ function draw(product){
 	var words = getApi(product);
  	var width = 800;
 	var height = 800;
-
 	
 d3.layout.cloud()
   	.size([width, height])
