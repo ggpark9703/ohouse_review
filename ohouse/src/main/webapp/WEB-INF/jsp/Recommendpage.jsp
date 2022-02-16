@@ -28,7 +28,7 @@
 		<h5 class="ratings_main" id="colors"></h5>
 		<h5 class="ratings_main" id="material"></h5>
 		<h5 class="ratings_main" ></h5>
-		<div style="width: 55%; " class="totalChart_position">
+		<div style="width: 45%; " class="totalChart_position">
 		     <canvas id="totalChart"></canvas>
 	    </div>
 		</div>
