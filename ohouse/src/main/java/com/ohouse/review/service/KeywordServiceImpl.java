@@ -19,7 +19,7 @@ public class KeywordServiceImpl implements KeywordService {
 		InputStreamReader in = null;
 		
 		// product 부분을 변수로 받음
-		String myURL = "http://10.10.0.4:8393/api/v10/search/facets?collection=T1_OZIP2022&output=application/json&facet={%22namespace%22:%22keyword%22,%22count%22:%2250%22,%22id%22:%22$._word%22}&query=(keyword::/카테고리/제품명/%22"+product+"%22)";
+		String myURL = "http://10.10.0.4:8393/api/v10/search/facets?collection=T1_OZIP2022&output=application/json&facet={%22namespace%22:%22keyword%22,%22count%22:%22100%22,%22id%22:%22$._word%22}&query=(keyword::/카테고리/제품명/%22"+product+"%22)";
 		
 		try {
 			URL url = new URL(myURL);
