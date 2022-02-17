@@ -26,6 +26,7 @@
     border-radius: 50%;
     animation: sp-anime 0.8s infinite linear;
 }
+
 @keyframes sp-anime {
     0% {
         transform: rotate(0deg);
