@@ -576,3 +576,19 @@ function getBestItem(category){
 	})
 }
 
+function goPage(getCategory){
+	console.log(getCategory)
+	var productInfo = document.getElementById(getCategory).innerHTML
+	$.ajax({
+
+				type: "GET",
+				url: "/products",
+				data: {product_name:productInfo.trim()},
+				success: function(response){
+					
+					console.log(response['product_link'])
+					location.href = response['product_link']
+
+				}
+			})
+}

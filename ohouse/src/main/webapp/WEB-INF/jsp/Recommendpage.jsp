@@ -17,7 +17,7 @@
 </div>
 <!-- 추천 div -->
 <div class="card-wrapper2" id="div2">
-	   <div class="card" style="width:1400px;height: 700px;" >
+	   <div class="card" style="width:1400px;height: 500px;" >
 	   	<img class= "main_img" src="" id="main_img" align="left">
 		<div class="card-body">
 		<h5 class="card-title_main" id="all_recommend"></h5>
@@ -28,7 +28,7 @@
 		<h5 class="ratings_main" id="colors"></h5>
 		<h5 class="ratings_main" id="material"></h5>
 		<h5 class="ratings_main" ></h5>
-		<div style="width: 45%; " class="totalChart_position">
+		<div style="width: 35%; " class="totalChart_position">
 		     <canvas id="totalChart"></canvas>
 	    </div>
 		</div>
@@ -56,6 +56,7 @@
 	        <div class="ratings" id="product_ratings"><i class="fa fa-star rating-color"></i></div>
 	        <div class="product_price" id="product_price1"></div>
 	        </div>
+	        <button type="button" class="btn btn-primary" id="buy" onclick="goPage('titlePrice');">구매페이지</button>
 	        </div>
 	         <div style="width: 100%; height: 100%;">
 		       <canvas id="priceChart"></canvas>
@@ -80,7 +81,7 @@
 	 		<div class="ratings" id="product_ratings2"><i class="fa fa-star rating-color"></i></div>	
 	        	 		<div class="product_price" id="product_price2"></div>
 	        </div>
-	        
+	        <button type="button" class="btn btn-primary" id="buy" onclick="goPage('titleDurablity');">구매페이지</button>
 	        </div>
 	  
 	         <div style="width: 100%; height: 100%;">
@@ -107,9 +108,10 @@
 	        <div class="ratings" id="product_ratings3"><i class="fa fa-star rating-color"></i></div>
 	        
 	        <div class="product_price" id="product_price3"></div>
-	        
+	     
 	        
 	        </div>
+	        <button type="button" class="btn btn-primary" id="buy" onclick="goPage('titleDesign');">구매페이지</button>
 	        </div>
 	         <div style="width: 100%; height: 100%;">
 		       <canvas id="designChart"></canvas>
@@ -140,12 +142,12 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 <i class="bi bi-house-heart-fill"></i>
-	<button type="button" onclick="changeForm();">🛏️ 매트리스</button>
       <button type="button" class="btn btn-primary" id="mattress">🛏️ 매트리스</button>
       <button type="button" class="btn btn-primary" id="sofa" >🛋️ 소파</button>
       <button type="button" class="btn btn-primary" id="hangger"  >👔 행거</button>
       <button type="button" class="btn btn-primary" id="table" >🧇 식탁</button>
-	<a href="#" class="icon facebook"><span>해당 상품과 키워드(가성비,내구성,디자인)간의 연관성을 바탕으로 추천도가 측정됩니다.<br><br>차트 항목 클릭 시 관련 리뷰를 확인 할 수 있습니다.</span></a>	
+      
+    <button type="button" class="btn btn-primary" onclick="changeForm();">항목별 추천</button>
     </nav>  
 <script type="text/javascript" src = "<%=request.getContextPath()%>/js/Recommend.js"></script>
 </body>

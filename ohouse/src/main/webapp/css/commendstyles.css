@@ -109,6 +109,11 @@
 	border-radius: 15px;
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
+#buy{
+	position: absolute;
+	left:300px;
+	top:90px;
+}
 .card{
 	line-height: 100px;
 	color: black;
@@ -128,8 +133,9 @@
 .card-title_main{
 	font-size: 17pt;
 	font-family: 'KyoboHandwriting2020A';
-	text-align: right;
-	margin-top:-140px;
+	margin-top:10px;
+	text-align: left;
+	padding-left: 500px;
 }
 .ratings
 {
@@ -141,7 +147,8 @@
 {
 	font-size: 17pt;
 	font-family: 'KyoboHandwriting2020A';
-	text-align: right;	
+	text-align: left;
+	padding-left: 500px;
 }
 
 
@@ -326,8 +333,9 @@
 }
 .main_img{
 	
-	width:695px;
+	width:500px;
 	margin-top: -200px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 	
 }
 .text, .slideDown, .slideUp {
@@ -459,7 +467,7 @@ a span:before {
 }
 .totalChart_position{
 	position: absolute;
-	top:350px;
+	top:200px;
 	right:30px;
 }
 a:hover span {

@@ -20,7 +20,7 @@ public class DbRestController {
 		Product_Mapper testMapper;
 		
 		@RequestMapping(value="/products",method = RequestMethod.GET)
-		public Map<String, String> startPoint(@RequestParam("product_name") String product_name) {
+		public Map<String, String> product_Info(@RequestParam("product_name") String product_name) {
 			
 			
 			return testMapper.getProductInfo(product_name);

@@ -28,7 +28,6 @@
                 <li onclick="ajaxTest('/Main')">메인화면</li>
                 <li onclick="ajaxTest('/recommend')">오늘의 추천</li>
                 <li onclick="ajaxTest('/keyword')">오늘의 분석</li>
-                <li onclick="ajaxTest('/topic')">오늘의 추천2</li>
             </ul>
         </nav>
   <div id="Context" class="view_frame">

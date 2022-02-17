@@ -13,7 +13,7 @@ public class RecommendController {
 	private SearchService searchService;
 	
 	@RequestMapping(value="/api",method = RequestMethod.GET)
-	public String searchQuery(@RequestParam("category") String category,@RequestParam("filter") String filter) {
+	public String searchCorrelation(@RequestParam("category") String category,@RequestParam("filter") String filter) {
 		String result = searchService.getCorrelation(category,filter);
 		return result;
 	}
@@ -24,5 +24,5 @@ public class RecommendController {
 		return reviewList;
 		
 	}
- 
+	
 }
