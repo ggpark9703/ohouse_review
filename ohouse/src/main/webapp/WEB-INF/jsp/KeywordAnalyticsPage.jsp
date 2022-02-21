@@ -10,11 +10,47 @@
 
 </head>
 <body>
-<!--WordCloud-->
 
-<div class="card">
-        <div id="wordcloud" align="center"></div>
+
+
+<div class="row">
+
+<!--WordCloud-->
+      <div class="card">
+        <div id="wordcloud"></div>
       </div>
+       <div class="card" style="width:500px;height:500px">
+        <div id="review">
+        </div>
+      </div>
+    </div>
+
+<!-- 네비게이션 바 -->
+<nav class="navbar fixed-bottom navbar-expand-sm navbar" style="padding-bottom:30px;">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+</button>
+<div class="dropdown">
+<i class="bi bi-house-heart-fill"></i>
+
+      <button type="button" class="btn btn-primary" id="mattress">
+      <span class="dropbtn_icon"></span>
+      🛏️ 매트리스</button>
+      <button type="button" class="btn btn-primary" id="sofa" >
+	  🛋️ 소파</button>
+      <button type="button" class="btn btn-primary" id="hangger">
+      👔 행거</button>
+      <button type="button" class="btn btn-primary" id="table" >
+      🧇 식탁</button>
+      <div class="dropdown-content">
+        <a href="#asset1">product1</a>
+        <a href="#asset2">product2</a>
+        <a href="#asset3">product3</a>
+        <a href="#asset4">product4</a>
+        <a href="#asset5">product5</a>
+      </div>
+</div>
+</nav>
 
 <script type="text/javascript" src = "<%=request.getContextPath()%>/js/KeyWord.js"></script> 
 </body>
