@@ -23,7 +23,7 @@
 	   <div class="card" style="width:1400px;height: 500px;" >
 	   	<img class= "main_img" src="" id="main_img" align="left">
 		<div class="card-body">
-		<h5 class ="des_1">#종합 추천도 1위</h5>
+		<h5 class ="des_1">🥇 #<span class="OFHighlightTerm1">종합 추천도 1위 </span>🥇</h5>
 		<h5 class ="des_2">#상품정보</h5>
 		<h5 class ="des_3">#종합 추천도</h5>
 		<h5 class="card-title_main" id="all_recommend"></h5>
@@ -50,7 +50,7 @@
 	      <div class="card-body">
 	      	 <div class="slide-effect">
 	      	 	<div class="slideUp">
-		          <h5 class="subtitle">#가성비</h5>
+		          <h5 class="subtitle">🥇<span class="OFHighlightTerm1">가성비</span></h5>
 		     	</div>
 	         </div>
 			  <div class="slide-effect" id="action_price_img">
@@ -76,7 +76,7 @@
 	      <div class="card-body">
 	      	 <div class="slide-effect">
 	      	 	<div class="slideUp">	      
-			      	<h5 class="subtitle">#내구성</h5>
+			      	<h5 class="subtitle">🥇<span class="OFHighlightTerm2">내구성</span></h5>
 			      	<span class="subtitle-hash"></span>
 			     </div>
 			  </div>
@@ -90,6 +90,7 @@
 	 		<div class="ratings" id="product_ratings2"><i class="fa fa-star rating-color"></i></div>	
 	        	 		<div class="product_price" id="product_price2"></div>
 	        </div>
+	        
 	        <button type="button" class="btn btn-primary" id="buy" onclick="goPage('titleDurablity');">구매페이지</button>
 	        </div>
 	  
@@ -102,7 +103,7 @@
 	      <div class="card-body">
 	      	 <div class="slide-effect">
 	      	 	<div class="slideUp">	 
-		     	 <h4 class="subtitle">#디자인</h4>
+		     	 <h4 class="subtitle">🥇<span class="OFHighlightTerm3">디자인</span></h4>
 		     	 <span class="subtitle-hash"></span>
 		     	</div>
 		     </div>

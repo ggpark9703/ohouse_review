@@ -174,9 +174,9 @@ function getApi(category){
 			chart3.data.datasets[0].dummy = ['(keyword::/"추천"/"디자인")',category,new_O_Arr];
 			chart3.data.labels = newArr;
 			chart3.data.datasets[0].data = newValue; 
-			console.log('테스트'+newArr)
+
 			chart3.update();
-			getBestItem();
+
 		}
 	})
 }
@@ -187,6 +187,9 @@ function getTitle(query,valueArr,arr,img_id,product_ratings,product_price){
 			if(valueArr[idx] == maxValue){
 				getProduct_Info(arr[idx].trim(),product_ratings,product_price)
 				var product_name=(arr[idx].trim()+".png")
+				if(product_name == "BRUG 스탠드행거 KS1002/LDR.png"){
+					product_name = 'BRUG 스탠드행거 KS1002LDR.png';
+				}
 				$(query).text(arr[idx])
 				$(img_id).attr("src","../img/recommend_img/"+product_name);
 			}
@@ -197,7 +200,6 @@ function getTitle_Main(query,valueArr,arr){
 		for (idx in valueArr){
 			if(valueArr[idx] == maxValue){
 				$(query).text(arr[idx])
-				console.log(arr[idx])
 				getProduct_Info_Main(arr[idx].trim())
 			}
 		}
@@ -257,7 +259,7 @@ function getChart(context){
 					            var product_name = myBarChart.data.datasets[0].dummy[2][chart_idx];
 					            var product_category = myBarChart.data.datasets[0].dummy[1];
 					            var product_keyword = myBarChart.data.datasets[0].dummy[0];
-					            console.log(product_name_m)
+	
 					    		$(document).ready(function(){
 									$('#sampleModal').modal();
 									$('#product-name').text(product_name);
@@ -275,7 +277,7 @@ function getChart(context){
 													for (idx in Json){
 														
 														var user_name = Json[idx]['es_title'];
-														console.log(user_name);
+													
 														var summury = Json[idx]['es_summary'];
 														review_data += '<div class="card2 p-3 mt-2"><div class="d-flex justify-content-between align-items-center"><div class="user d-flex flex-row align-items-center">';
 														review_data += '<span><small class="font-weight-bold text-primary">'+user_name+'</small> <small class="font-weight-bold">💬 '+summury+'</small></span> </div>'
@@ -397,7 +399,7 @@ function getChart_main(context){
 					            var product_name = myBarChart.data.datasets[0].dummy[2][chart_idx];
 					            var product_category = myBarChart.data.datasets[0].dummy[1];
 					            var product_keyword = myBarChart.data.datasets[0].dummy[0];
-					            console.log(product_name_m)
+					           
 					    		$(document).ready(function(){
 									$('#sampleModal').modal();
 									$('#product-name').text(product_name);
@@ -415,7 +417,7 @@ function getChart_main(context){
 													for (idx in Json){
 														
 														var user_name = Json[idx]['es_title'];
-														console.log(user_name);
+													
 														var summury = Json[idx]['es_summary'];
 														review_data += '<div class="card2 p-3 mt-2"><div class="d-flex justify-content-between align-items-center"><div class="user d-flex flex-row align-items-center">';
 														review_data += '<span><small class="font-weight-bold text-primary">'+user_name+'</small> <small class="font-weight-bold">💬 '+summury+'</small></span> </div>'
@@ -613,11 +615,11 @@ function getBestItem(category){
 		url: "/api",
 		data: {category:encodeURIComponent(category),filter:encodeURIComponent('(keyword::/"추천"/"가격" OR keyword::/"추천"/"디자인" OR keyword::/"추천"/"내구성")')},
 		success: function(response){
-			console.log(response)
+		
 			var parse0 = JSON.parse(response);
-			console.log(parse0);
+		
 			var Json = parse0['es_apiResponse']['ibmsc_facet']['ibmsc_facetValue'];
-			console.log(Json)
+	
 			var arr = new Array();
 			var o_arr = new Array();
 			var valueArr = new Array();
@@ -659,7 +661,7 @@ function getBestItem(category){
 }
 
 function goPage(getCategory){
-	console.log(getCategory)
+
 	var productInfo = document.getElementById(getCategory).innerHTML.replace(/\([^)]*\)/,"").replace(/\d{0,4}(colors|GG132C)$/,"").replace(/\[(.*?)\]/,"");
 	$.ajax({
 
@@ -668,7 +670,7 @@ function goPage(getCategory){
 				data: {product_name:productInfo.trim()},
 				success: function(response){
 					
-					console.log(response['product_link'])
+				
 					location.href = response['product_link']
 
 				}

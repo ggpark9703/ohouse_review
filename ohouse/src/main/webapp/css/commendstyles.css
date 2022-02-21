@@ -36,8 +36,8 @@
     position:absolute;
     color: #fbc634 !important;
     font-size: 20pt;
-    right:70px;
-    top:32px;
+    right:60px;
+    top:-68px;
 }
 
 .card-img-top{
@@ -60,20 +60,12 @@
 }
 .subtitle{
 	position:absolute;
-	font-size: 23pt;
+	font-size: 18pt;
 	font-family: 'KyoboHandwriting2020A';
 	margin-right: 300px;
 	top:-200px;
 }
-.subtitle span {
-  top:10px;
-  left:10px;
-  font-size:50px;
-  font-weight:600;
-  opacity:0;
-  text-transform:uppercase;
-  animation:fade 400ms ease-in-out forwards;
-}
+
 .text{
 	width:400px;
 	color: black;
@@ -112,7 +104,7 @@
 #buy{
 	position: absolute;
 	left:300px;
-	top:90px;
+	top:60px;
 }
 .card{
 	line-height: 100px;
@@ -124,6 +116,7 @@
 	border-radius: 15px;
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
+
 .card-title{
 	font-size: 17pt;
 	font-family: 'KyoboHandwriting2020A';
@@ -275,7 +268,7 @@
     padding-top: 50px;
 }
 .modal-body{
-    height: 40vh;
+    height: 50vh;
     overflow-y: auto;
     background-color: #F6F6F7;
 }
@@ -544,10 +537,13 @@ a.facebook span {
 }
 
 .review-count {
-    margin-bottom: 2px;
+	position:absolute;
+
     font-family: 'OTWelcomeBA';
     font-size: 20px !important;
-    margin-right:-320px;
+    right:25px;
+    top:-59px;
+    
 }
 .product_price2{
 	font-size: 15pt;

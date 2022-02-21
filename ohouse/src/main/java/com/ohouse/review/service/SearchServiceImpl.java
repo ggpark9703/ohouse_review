@@ -17,7 +17,7 @@ public class SearchServiceImpl implements SearchService {
 		URLConnection urlConn = null;
 		InputStreamReader in = null;
 		String myURL = "http://10.10.0.4:8393/api/v10/search/facet?collection=T1_OZIP2022&facet=%7B%22namespace%22%3A%22keyword%22%2C%22count%22%3A%225%22%2C%22id%22%3A%22%24.product_category.product_title%22%7D&query="+filter+"AND%20(keyword%3A%3A%2F%22%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC%22%2F"+category+")&output=application/json";
-		
+		System.out.println(myURL);
 		try {
 			URL url = new URL(myURL);
 			urlConn = url.openConnection();
