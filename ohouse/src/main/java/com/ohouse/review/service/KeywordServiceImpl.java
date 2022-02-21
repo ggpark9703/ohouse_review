@@ -19,12 +19,10 @@ public class KeywordServiceImpl implements KeywordService {
 		InputStreamReader in = null;
 		
 		// product 부분을 변수로 받음
-		String myURL = "http://10.10.0.4:8393/api/v10/search/facets?collection=T1_OZIP2022&output=application/json&facet={%22namespace%22:%22keyword%22,%22count%22:%22100%22,%22id%22:%22$._word%22}&query=(keyword::/추천/디자인)OR(keyword::/추천/가격)OR(eyword::/추천/내구성)AND(keyword::/카테고리/제품명/%22"+product+"%22)";
-		
+		String myURL = "http://10.10.0.4:8393/api/v10/search/facets?collection=T1_OZIP2022&output=application/json&facet={%22namespace%22:%22keyword%22,%22count%22:%22100%22,%22id%22:%22$._word%22}&query=(keyword::/추천/디자인%20OR%20keyword::/추천/가격%20OR%20keyword::/추천/내구성)AND(keyword::/카테고리/제품명/%22"+product+"%22)";
 		try {
 			URL url = new URL(myURL);
 			urlConn = url.openConnection();
-			
 			if(urlConn != null)
 				urlConn.setReadTimeout(60*1000);
 			if(urlConn != null && urlConn.getInputStream() != null) {
@@ -47,13 +45,13 @@ public class KeywordServiceImpl implements KeywordService {
 	}
 
 	@Override
-	public String getReviewData(String product_keyword,String product_category, String product_name)  {
+	public String getReviewData(String product, String thisword)  {
 		StringBuilder sb = new StringBuilder();
 		URLConnection urlConn = null;
 		InputStreamReader in = null;
 		
-		String myURL = "";
-		
+		String myURL = 
+				"http://10.10.0.4:8393/api/v10/search?results=100&collection=T1_OZIP2022&output=application/json&query=(keyword::/추천/디자인%20OR%20keyword::/추천/가격%20OR%20keyword::/추천/내구성)AND(keyword::/카테고리/제품명/%22"+product+"%22)AND(keyword::/%22Part of Speech%22/%22"+thisword+"%22)";
 		try {
 			URL url = new URL(myURL);
 			urlConn = url.openConnection();
