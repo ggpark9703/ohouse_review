@@ -21,6 +21,13 @@ public class KAController {
 	  return result;
 	  }
 	  
+	//리뷰 데이터
+	  @RequestMapping(value="/rpi",method = RequestMethod.GET, produces ="application/text; charset=UTF-8") 
+	  public String listQuery(@RequestParam("product") String product, @RequestParam("thisword") String thisword) { 
+	  String result = keywordService.getReviewData(product, thisword);
+	  return result;
+	  }
+	  
 	 
 	
 }
