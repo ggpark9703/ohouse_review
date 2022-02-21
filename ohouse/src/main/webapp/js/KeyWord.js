@@ -1,112 +1,246 @@
 //첫 화면
 $(document).ready(function(){
-draw("미엘레 1단 스탠드 행거 4colors");
+getApi("Q4 유로탑 롤팩 매트리스 2size");
 });
 
 
-//워드클라우드 구현
-function draw(product){
-
-/*	var words = getApi(product);
-	console.log(words);*/
-	
-var words = [{label: '좋다', value: 1.02}
-,{label: '너무', value: 1.09}
-,{label:'같다', value: 1.1}
-,{label: '가격', value: 1.92}
-,{label: '잘', value: 1.05}
-,{label: '예쁘다', value: 2.53}
-,{label: '이쁘다', value: 2.53}
-,{label: '하다', value: 1.01}
-,{label: '깔끔하다', value: 2.53}
-,{label: '있다', value: 1.02}
-,{label: '성비', value: 1.93}
-,{label: '디자인', value: 2.14}
-,{label: '튼튼하다', value: 1.04}
-,{label: '사다', value: 1.06}];
-console.log(words);
-	
-	var fill = d3.scale.category20();
-	var width = 1000;
-	var height = 1000;
-	
-	d3.layout.cloud()
-	  	.size([width, height])
-	 	.words(words)
-	 	.padding(0)
-	  	.rotate(0)
-	  	.font("Impact")
-	  	.fontSize(function(d) {return d.value*10;})
-	  	.on("end", drawcloud)
-	  	.start();
-	  	 	
-	function drawcloud(words) {
-	
-		d3.select("#wordcloud").append("svg")
-	      .attr("width", width)
-	      .attr("height", height)
-	      .append("g")
-	      .attr("transform", "translate("+ width/2 +","+ height/2 +")")
-	      .selectAll("text")
-	      .data(words)
-	      .enter().append("text")
-	      .style("font-size", function(d) { return d.value*10 + "px"; })
-   		.style("fill", function(d, i) { return fill(i); })
-	      .attr("text-anchor", "middle")
-	      .attr("transform", function(d) {
-	          return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")"; 
-	      })
-	      .text(function(d) { return d.label; })
-          .on("mouseover", handleMouseOver)
-          .on("mouseout", handleMouseOut)
-          .on("click", handleClick);
-          
-          function handleMouseOver(d, i) {
-          d3.select(this)
-            .classed("word-hovered", true)
-              .attr("font-weight", "bold");
-        }
-        
-        function handleMouseOut(d, i) {
-          d3.select(this)
-            .classed("word-hovered", false)
-            .attr("font-weight", "normal");
-        }
-        
-        function handleClick(d, i) {
-          var e = d3.select(this);
-
-        }
- 
-}
-
-}
 // API data 파싱
 function getApi(product){
-		var arr = [];
+		
 		$.ajax({
 		type: "GET",
 		url: "/wpi",
 		data: {product:encodeURIComponent(product)},
 		success: function(response){
+			var arr = new Array();
 			var par = JSON.parse(response);
 			console.log(par);
 			var Json = par['es_apiResponse']['ibmsc_facet']['ibmsc_facetValue'];
 			console.log(Json);
 			for (idx in Json){
-				if(Json[idx]['es_property'][0]['value']<1.0)
+				if(Json[idx]['es_property'][0]['value']<0.95)
 				{
 					idx = idx + 1;
-				}else{
+				}else if(Json[idx]['label']=="소파"||Json[idx]['label']=="쇼파"||Json[idx]['label']=="매트리스"
+						||Json[idx]['label']=="테이블"||Json[idx]['label']=="식탁"||Json[idx]['label']=="행거"
+						||Json[idx]['label']=="옷걸이"||Json[idx]['label']=="좋다"||Json[idx]['label']=="너무"
+						||Json[idx]['label']=="같다"||Json[idx]['label']=="정말"||Json[idx]['label']=="너무너무"
+						||Json[idx]['label']=="ᅲᅲ"||Json[idx]['label']=="ᅲ"||Json[idx]['label']=="ᄒᄒ"
+						||Json[idx]['label']=="ᄒ"||Json[idx]['label']=="좀"||Json[idx]['label']=="하다"
+						||Json[idx]['label']=="있다"||Json[idx]['label']=="배송"||Json[idx]['label']=="잘"
+						||Json[idx]['label']=="넘"||Json[idx]['label']=="더"||Json[idx]['label']=="때"
+						||Json[idx]['label']=="다"||Json[idx]['label']=="편"||Json[idx]['label']=="맘"
+						||Json[idx]['label']=="기사"||Json[idx]['label']=="근데"||Json[idx]['label']=="친절하다"
+						||Json[idx]['label']=="늦다"||Json[idx]['label']=="배"||Json[idx]['label']=="송"
+						||Json[idx]['label']=="짱"||Json[idx]['label']=="2"||Json[idx]['label']=="딱"
+						||Json[idx]['label']=="후"||Json[idx]['label']=="3"||Json[idx]['label']=="1"
+						||Json[idx]['label']=="오다"||Json[idx]['label']=="안"||Json[idx]['label']=="오늘"
+						||Json[idx]['label']=="포장"||Json[idx]['label']=="진짜"||Json[idx]['label']=="빨리"
+						||Json[idx]['label']=="분"||Json[idx]['label']=="그리고"||Json[idx]['label']=="조금"
+						||Json[idx]['label']=="최고"||Json[idx]['label']=="들다"||Json[idx]['label']=="아주"
+						||Json[idx]['label']=="박스"||Json[idx]['label']=="비닐"||Json[idx]['label']=="엄청"
+						||Json[idx]['label']=="침대"||Json[idx]['label']=="없이"||Json[idx]['label']=="후기"){
+					idx = idx +1;
+				}//가독성을 위해 분리
+				else if(Json[idx]['label']=="성비"){
+				arr.push({
+						label : "가성비",
+						value : Math.floor(Json[idx]['es_property'][0]['value']*100)/100
+					});
+					}
+				else{
 				arr.push({
 						label : Json[idx]['label'],
 						value : Math.floor(Json[idx]['es_property'][0]['value']*100)/100
 					});
 					}
 				}
+				console.log(arr);
+				draw(arr);
+				//워드클라우드 구현
+				function draw(words){
+				
+					var fill = d3.scale.category20();
+					var width = 500;
+					var height = 500;
+	
+				d3.layout.cloud()
+				  	.size([width, height])
+				 	.words(words)
+				 	.padding(0)
+				  	.rotate(0)
+				  	.font("Impact")
+				  	.fontSize(function(d) {return d.value*10;})
+				  	.on("end", drawcloud)
+				  	.start();
+	  	 	
+					function drawcloud(words) {
 					
-				}
-			})
-			console.log(arr);
-			return arr;
-			}
+						d3.select("#wordcloud").append("svg")
+					      .attr("width", width)
+					      .attr("height", height)
+					      .append("g")
+					      .attr("transform", "translate("+ width/2 +","+ height/2 +")")
+					      .selectAll("text")
+					      .data(words)
+					      .enter().append("text")
+					      .style("font-size", function(d) { return d.value*10 + "px"; })
+				   		.style("fill", function(d, i) { return fill(i); })
+					      .attr("text-anchor", "middle")
+					      .attr("transform", function(d) {
+					          return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")"; 
+					      })
+					      .text(function(d) { return d.label; })
+				          .on("mouseover", handleMouseOver)
+				          .on("mouseout", handleMouseOut)
+				          .on("click", handleClick);
+				          
+				          function handleMouseOver() {
+				          d3.select(this)
+				            .classed("word-hovered", true)
+				              .attr("font-weight", "bold");
+				        }
+				        
+				        function handleMouseOut() {
+				          d3.select(this)
+				            .classed("word-hovered", false)
+				            .attr("font-weight", "normal");
+				        }
+				        
+				        function handleClick() {
+				       		var e = d3.select(this).text();
+				       		console.log(e);
+							$(document).ready(function(){
+								$.ajax({
+											type: "GET",
+											url: "/rpi",
+											data: {product:encodeURIComponent(product),thisword:encodeURIComponent(e)},
+											success: function(response){
+												$('#review').empty();
+												var parse0 = JSON.parse(response);
+												var Json = parse0['es_apiResponse']['es_result'];
+													for (idx in Json){
+														console.log(user_name);
+														var summury = Json[idx]['es_summary'];
+														
+													}
+							
+											    $('#review').append(summary).toString;
+											    
+											}
+										})
+							});
+							
+								}	
+      						  }
+ 							}
+
+						}
+							})
+			
+	}
+	
+
+var navM = document.getElementById('mattress');
+var navS = document.getElementById('sofa');
+var navH = document.getElementById('hangger');
+var navT = document.getElementById('table');
+
+
+$("#mattress").click(function(){
+	
+	navS.classList.remove('active');
+	navH.classList.remove('active');
+	navT.classList.remove('active');
+	
+	navM.classList.add('active');
+	
+	$("#asset1").click(function(){
+		getApi("Q4 유로탑 롤팩 매트리스 2size")
+	});
+	$("#asset2").click(function(){
+		getApi("몬스터 필로우탑 침대 매트리스 80T (S/SS/Q/K) 2colors")
+	});
+	$("#asset3").click(function(){
+		getApi("편안한 제주 본넬스프링 침대 매트리스 (싱글/슈퍼싱글/퀸/킹)")
+	});
+	$("#asset4").click(function(){
+		getApi("몬스터 필로우탑 침대 매트리스 50T (S/SS/Q/K) 2colors")
+	});
+	$("#asset5").click(function(){
+		getApi("편안한 제주 필로우탑 본넬스프링 침대 매트리스 (싱글/슈퍼싱글/퀸/킹)")
+	});
+	
+});
+$("#sofa").click(function(){
+
+	navM.classList.remove('active');
+	navH.classList.remove('active');
+	navT.classList.remove('active');
+	
+	navS.classList.add('active');
+	
+	$("#asset1").click(function(){
+		getApi("루비 2인 소파 패브릭 8colors")
+	});
+	$("#asset2").click(function(){
+		getApi("프라제르 아쿠아텍스 4인용 소파 (스툴증정) 2colors")
+	});
+	$("#asset3").click(function(){
+		getApi("DK053 3인용 풀커버 패브릭 소파 5colors (스툴 기본포함)")
+	});
+	$("#asset4").click(function(){
+		getApi("[5%쿠폰] POL 아쿠아텍스 3인소파 2colors(스툴무료증정)")
+	});
+	$("#asset5").click(function(){
+		getApi("[10%쿠폰] 타미 1인 패브릭소파 3colors")
+	});
+});
+$("#hangger").click(function(){
+
+	navS.classList.remove('active');
+	navM.classList.remove('active');
+	navT.classList.remove('active');
+	
+	navH.classList.add('active');
+	
+	$("#asset1").click(function(){
+		getApi("미엘레 1단 스탠드 행거 4colors")
+	});
+	$("#asset2").click(function(){
+		getApi("(당일발송) 무볼트 드레스룸 조립식 멀티행거")
+	});
+	$("#asset3").click(function(){
+		getApi("당일출고 순수원목 수납 선반형 1단 A행거")
+	});
+	$("#asset4").click(function(){
+		getApi("왕자 네오스페이스 (베이직2단)")
+	});
+	$("#asset5").click(function(){
+		getApi("[5%쿠폰]BRUG 스탠드행거 KS1002/LDR")
+	});
+});
+$("#table").click(function(){
+
+	navM.classList.remove('active');
+	navS.classList.remove('active');
+	navH.classList.remove('active');
+	
+	navT.classList.add('active');
+	
+	$("#asset1").click(function(){
+		getApi("FW 화이트 원형테이블 700size")
+	});
+	$("#asset2").click(function(){
+		getApi("원형 티 카페 테이블 2size")
+	});
+	$("#asset3").click(function(){
+		getApi("마일로 원형 테이블 800")
+	});
+	$("#asset4").click(function(){
+		getApi("[쿠폰할인] 올리브 1200 렌지대형 아일랜드식탁 GG132C")
+	});
+	$("#asset5").click(function(){
+		getApi("FW 화이트 원형테이블 800size")
+	});
+});
