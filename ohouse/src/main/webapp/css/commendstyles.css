@@ -131,11 +131,12 @@
 	text-align: left;
 }
 .card-title_main{
-	font-size: 17pt;
+	position:absolute;
+	font-size: 25pt;
 	font-family: 'KyoboHandwriting2020A';
-	margin-top:10px;
+	top:80px;
 	text-align: left;
-	padding-left: 500px;
+	left: 530px;
 }
 .ratings
 {
@@ -177,7 +178,17 @@
   background: white;
   transition: all 0.3s ease 0s;
 }
-
+.btn-danger{
+  font-family: GongGothicMedium;
+  font-size: 15px;
+  color: red;
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgb(255, 0, 0);
+  border-radius: 40px;
+  background: white;
+  transition: all 0.3s ease 0s;
+}
 .btn-primary:hover {
   color: #FFF;
   background: rgba(58, 133, 191, 1);
@@ -252,13 +263,19 @@
 .OFHighlightTerm1{
 	background-color: yellow;
 }
+.OFHighlightTerm2{
+	background-color: #a8d1ff;
+}
+.OFHighlightTerm3{
+	background-color: #ffb7b7;
+}
 
 .modal-dialog{
     overflow-y: initial !important;
     padding-top: 50px;
 }
 .modal-body{
-    height: 60vh;
+    height: 40vh;
     overflow-y: auto;
     background-color: #F6F6F7;
 }
@@ -328,8 +345,6 @@
   width: 100%;
   height: 40px;
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .main_img{
 	
@@ -362,6 +377,16 @@
   animation: slideUp ease .6s forwards .4s;
 }
 
+#buy_modal{
+	position: absolute;
+	right:10px;
+	top:70px;
+}
+#close_modal{
+	position: absolute;
+	top:110px;
+	right:10px;
+}
 
 @keyframes slideUp {
   0% {transform: translateY(0);}
@@ -480,7 +505,33 @@ a:hover span {
 	position: absolute;
 	left:100px;
 }
-
+.des_1{
+    font-size: 25pt;
+	font-family: 'KyoboHandwriting2020A';
+    position: absolute;
+    left:520px;
+    top:20px;
+}
+#buy_main{
+	position: absolute;
+	top:420px;
+	right: 30px;
+	
+}
+.des_2{
+    font-size: 25pt;
+	font-family: 'KyoboHandwriting2020A';
+    position: absolute;
+    left:520px;
+    top:170px;
+}
+.des_3{
+    font-size: 25pt;
+	font-family: 'KyoboHandwriting2020A';
+    position: absolute;
+    left:880px;
+   	top:170px;
+}
 /* Hover through the icons */
 
 a.facebook:hover {
@@ -499,6 +550,11 @@ a.facebook span {
     margin-right:-320px;
 }
 .product_price2{
+	font-size: 15pt;
+	font-family: 'KyoboHandwriting2020A';
+	text-align: left
+}
+.product_price3{
 	font-size: 15pt;
 	font-family: 'KyoboHandwriting2020A';
 	text-align: left

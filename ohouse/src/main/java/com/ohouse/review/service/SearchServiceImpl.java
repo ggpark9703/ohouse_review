@@ -54,8 +54,8 @@ public class SearchServiceImpl implements SearchService {
 		String myURL = "http://10.10.0.4:8393/api/v10/search?results=20"
 				+ "&collection=T1_OZIP2022&output=application/json"
 				+ "&query=(((*%3A*)%20AND%20"+product_keyword+")"
-				+ "%20AND%20(keyword%3A%3A%2F%22product_category%22%2F"+product_category+"))"
-				+ "%20AND%20(keyword%3A%3A%2F%22product_title%22%2F%22"+product_name+"%22)";
+				+ "%20AND%20(keyword%3A%3A%2F%22%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC%22%2F"+product_category+"))"
+				+ "%20AND%20(keyword%3A%3A%2F%22%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC%22%2F%22%EC%A0%9C%ED%92%88%EB%AA%85%22%2F%22"+product_name+"%22)";
 		
 		System.out.println(myURL);
 		try {

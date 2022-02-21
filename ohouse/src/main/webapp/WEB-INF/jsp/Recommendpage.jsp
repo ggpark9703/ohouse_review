@@ -16,10 +16,16 @@
   </div>
 </div>
 <!-- 추천 div -->
+
 <div class="card-wrapper2" id="div2">
+	      	 <div class="slide-effect">
+	      	 	<div class="slideUp">
 	   <div class="card" style="width:1400px;height: 500px;" >
 	   	<img class= "main_img" src="" id="main_img" align="left">
 		<div class="card-body">
+		<h5 class ="des_1">#종합 추천도 1위</h5>
+		<h5 class ="des_2">#상품정보</h5>
+		<h5 class ="des_3">#종합 추천도</h5>
 		<h5 class="card-title_main" id="all_recommend"></h5>
 		<h5 class="ratings_main" id="rating_price"></h5>
 		<h5 class="ratings_main" id="rating_dur"></h5>
@@ -31,6 +37,9 @@
 		<div style="width: 35%; " class="totalChart_position">
 		     <canvas id="totalChart"></canvas>
 	    </div>
+	    <button type="button" class="btn btn-primary" id="buy_main" onclick="goPage('all_recommend');">구매페이지</button>
+		</div>
+		</div>
 		</div>
 	   </div>
 	   
@@ -126,14 +135,20 @@
                     <!--Modal Header-->   
                     <div class="modal-header">
                         <h5 class="modal-title" id="product-name">Modal Title</h5>
-                        <button class="btn btn-danger btn-circle btn-circle-sm " data-dismiss="modal"><i class="fa fa-close" style="font-size:24px"></i></button>
-             </div>
+                    </div>
+                    <div class="modal-header">
+                                         
+                        <div class="product_info_M" id="product_info_M"></div>
+                        <button type="button" class="btn btn-primary" id="buy_modal" onclick="goPage('product-name');">구매페이지</button>
+                         <button type="button" class="btn btn-danger" id="close_modal" data-dismiss="modal">닫기</button>
+                        </div>
                     <!--Modal Body -->
                     <div class="modal-body" id="review_data">
                     </div>
                     <!--Modal Footer-->
-                    <div class="modal-footer">
-                    </div>
+ 
+                  
+
                 </div>
             </div>
         </div>

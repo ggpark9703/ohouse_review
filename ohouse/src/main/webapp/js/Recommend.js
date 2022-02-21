@@ -246,15 +246,47 @@ function getChart(context){
                     ]
                 },
                 options: {
-				
+					
 					onClick: function(evt, element) {
 					        if(element.length > 0) {
+							    $('h5').remove('.product_price3');
 					            var chart_idx = element[0].index;
-					           
+					           	var design_ratings = 'product_ratings4';
+								var product_price = 'product_info_M';
+								var product_name_m = myBarChart.data.labels[chart_idx].trim();
 					            var product_name = myBarChart.data.datasets[0].dummy[2][chart_idx];
 					            var product_category = myBarChart.data.datasets[0].dummy[1];
 					            var product_keyword = myBarChart.data.datasets[0].dummy[0];
-					            
+					            console.log(product_name_m)
+					    		$(document).ready(function(){
+									$('#sampleModal').modal();
+									$('#product-name').text(product_name);
+									getProduct_Info_review(product_name_m,design_ratings,product_price)
+									$.ajax({
+											type: "GET",
+											url: "/reviews",
+											data: {product_category:encodeURIComponent(product_category),product_keyword:encodeURIComponent(product_keyword),
+													product_name:encodeURIComponent(product_name)},
+											success: function(response){
+												$('#review_data').empty();
+												var parse0 = JSON.parse(response);
+												var Json = parse0['es_apiResponse']['es_result'];
+												var review_data = "";
+													for (idx in Json){
+														
+														var user_name = Json[idx]['es_title'];
+														console.log(user_name);
+														var summury = Json[idx]['es_summary'];
+														review_data += '<div class="card2 p-3 mt-2"><div class="d-flex justify-content-between align-items-center"><div class="user d-flex flex-row align-items-center">';
+														review_data += '<span><small class="font-weight-bold text-primary">'+user_name+'</small> <small class="font-weight-bold">💬 '+summury+'</small></span> </div>'
+														review_data += '</div></div>'
+													}
+							
+											    $('#review_data').append(review_data);
+											    
+											}
+										})
+								});	
 					        }},
 					scales: {
 					            y: {
@@ -357,12 +389,44 @@ function getChart_main(context){
 				
 					onClick: function(evt, element) {
 					        if(element.length > 0) {
+							    $('h5').remove('.product_price3');
 					            var chart_idx = element[0].index;
-					           
+					           	var design_ratings = 'product_ratings4';
+								var product_price = 'product_info_M';
+								var product_name_m = myBarChart.data.labels[chart_idx].trim();
 					            var product_name = myBarChart.data.datasets[0].dummy[2][chart_idx];
 					            var product_category = myBarChart.data.datasets[0].dummy[1];
 					            var product_keyword = myBarChart.data.datasets[0].dummy[0];
-					            
+					            console.log(product_name_m)
+					    		$(document).ready(function(){
+									$('#sampleModal').modal();
+									$('#product-name').text(product_name);
+									getProduct_Info_review(product_name_m,design_ratings,product_price)
+									$.ajax({
+											type: "GET",
+											url: "/reviews",
+											data: {product_category:encodeURIComponent(product_category),product_keyword:encodeURIComponent(product_keyword),
+													product_name:encodeURIComponent(product_name)},
+											success: function(response){
+												$('#review_data').empty();
+												var parse0 = JSON.parse(response);
+												var Json = parse0['es_apiResponse']['es_result'];
+												var review_data = "";
+													for (idx in Json){
+														
+														var user_name = Json[idx]['es_title'];
+														console.log(user_name);
+														var summury = Json[idx]['es_summary'];
+														review_data += '<div class="card2 p-3 mt-2"><div class="d-flex justify-content-between align-items-center"><div class="user d-flex flex-row align-items-center">';
+														review_data += '<span><small class="font-weight-bold text-primary">'+user_name+'</small> <small class="font-weight-bold">💬 '+summury+'</small></span> </div>'
+														review_data += '</div></div>'
+													}
+							
+											    $('#review_data').append(review_data);
+											    
+											}
+										})
+								});	
 					        }},
 					scales: {
 					            y: {
@@ -492,6 +556,24 @@ function getProduct_Info(product_name,product_ratings,product_price){
 				}
 			})
 }
+function getProduct_Info_review(product_name,product_ratings,product_price){
+		$.ajax({
+
+				type: "GET",
+				url: "/products",
+				data: {product_name:product_name},
+				success: function(response){
+					
+
+					var price ='<h5 class="product_price3">'+'별점: '+response['product_star']+'점<h5>'; 
+					price += '<h5 class="product_price3">'+'가격: '+response['product_price']+'<h5>';
+					price += '<h5 class="product_price3">'+'색상: '+response['product_color']+'<h5>';
+					price += '<h5 class="product_price3">'+'주 소재: '+response['product_material']+'<h5>';
+
+					$('#'+product_price).append(price);
+				}
+			})
+}
 function getProduct_Info_Main(product_name){
 	 		$.ajax({
 
@@ -500,10 +582,10 @@ function getProduct_Info_Main(product_name){
 				data: {product_name:product_name},
 				success: function(response){
 					
-					$('#rating_price').text(response['product_star']);
-					$('#price').text(response['product_price']);
-					$('#colors').text(response['product_color']);
-					$('#material').text(response['product_material']);
+					$('#rating_price').text("별점: "+response['product_star']+"점");
+					$('#price').text("가격: "+response['product_price']+"원");
+					$('#colors').text("색상: "+response['product_color']);
+					$('#material').text("주요 소재:"+response['product_material']);
 					$('#main_img').attr("src",response['product_image']);
 
 				}
@@ -578,7 +660,7 @@ function getBestItem(category){
 
 function goPage(getCategory){
 	console.log(getCategory)
-	var productInfo = document.getElementById(getCategory).innerHTML
+	var productInfo = document.getElementById(getCategory).innerHTML.replace(/\([^)]*\)/,"").replace(/\d{0,4}(colors|GG132C)$/,"").replace(/\[(.*?)\]/,"");
 	$.ajax({
 
 				type: "GET",
