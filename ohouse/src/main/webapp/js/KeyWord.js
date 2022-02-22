@@ -145,7 +145,7 @@ var navT = document.getElementById('table');
 
 
 $("#mattress").click(function(){
-	
+	d3.select("#wordcloud").select('svg').remove();
 	navS.classList.remove('active');
 	navH.classList.remove('active');
 	navT.classList.remove('active');
@@ -175,7 +175,7 @@ $("#mattress").click(function(){
 	
 });
 $("#sofa").click(function(){
-
+	d3.select("#wordcloud").select('svg').remove();
 	navM.classList.remove('active');
 	navH.classList.remove('active');
 	navT.classList.remove('active');
@@ -205,7 +205,7 @@ $("#sofa").click(function(){
 });
 
 $("#hangger").click(function(){
-
+	d3.select("#wordcloud").select('svg').remove();
 	navS.classList.remove('active');
 	navM.classList.remove('active');
 	navT.classList.remove('active');
@@ -235,7 +235,7 @@ $("#hangger").click(function(){
 });
 
 $("#table").click(function(){
-
+	d3.select("#wordcloud").select('svg').remove();
 	navM.classList.remove('active');
 	navS.classList.remove('active');
 	navH.classList.remove('active');
@@ -246,18 +246,22 @@ $("#table").click(function(){
 	d3.select("#wordcloud").select('svg').remove();
 		getApi("FW 화이트 원형테이블 700size")
 	});
+	
 	$("#asset2").click(function(){
 	d3.select("#wordcloud").select('svg').remove();
 		getApi("원형 티 카페 테이블 2size")
 	});
+	
 	$("#asset3").click(function(){
 	d3.select("#wordcloud").select('svg').remove();
 		getApi("마일로 원형 테이블 800")
 	});
+	
 	$("#asset4").click(function(){
 	d3.select("#wordcloud").select('svg').remove();
 		getApi("[쿠폰할인] 올리브 1200 렌지대형 아일랜드식탁 GG132C")
 	});
+	
 	$("#asset5").click(function(){
 	d3.select("#wordcloud").select('svg').remove();
 		getApi("FW 화이트 원형테이블 800size")
