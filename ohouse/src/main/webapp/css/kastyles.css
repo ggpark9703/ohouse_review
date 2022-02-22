@@ -69,10 +69,13 @@
   background: rgba(58, 133, 191, 0.75);
   border: 2px solid rgba(58, 133, 191, 0.75);
 }
+.card-wrapper{
+	text-align: center;
+	padding-top: 150px;
+}
 .card{
 	line-height: 100px;
 	color: black;
-	padding-top: 200px;
 	text-align: center;
 	margin:0 10px;
 	display: inline-block;
