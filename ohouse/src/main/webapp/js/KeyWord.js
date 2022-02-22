@@ -39,7 +39,8 @@ function getApi(product){
 						||Json[idx]['label']=="분"||Json[idx]['label']=="그리고"||Json[idx]['label']=="조금"
 						||Json[idx]['label']=="최고"||Json[idx]['label']=="들다"||Json[idx]['label']=="아주"
 						||Json[idx]['label']=="박스"||Json[idx]['label']=="비닐"||Json[idx]['label']=="엄청"
-						||Json[idx]['label']=="침대"||Json[idx]['label']=="없이"||Json[idx]['label']=="후기"){
+						||Json[idx]['label']=="침대"||Json[idx]['label']=="없이"||Json[idx]['label']=="후기"
+						||Json[idx]['label']=="800"||Json[idx]['label']=="600"||Json[idx]['label']=="이"){
 					idx = idx +1;
 				}//가독성을 위해 분리
 				else if(Json[idx]['label']=="성비"){
@@ -110,26 +111,7 @@ function getApi(product){
 				        function handleClick() {
 				       		var e = d3.select(this).text();
 				       		console.log(e);
-							$(document).ready(function(){
-								$.ajax({
-											type: "GET",
-											url: "/rpi",
-											data: {product:encodeURIComponent(product),thisword:encodeURIComponent(e)},
-											success: function(response){
-												$('#review').empty();
-												var parse0 = JSON.parse(response);
-												var Json = parse0['es_apiResponse']['es_result'];
-													for (idx in Json){
-														console.log(user_name);
-														var summury = Json[idx]['es_summary'];
-														
-													}
-							
-											    $('#review').append(summary).toString;
-											    
-											}
-										})
-							});
+				       		getReview(product, e);
 							
 								}	
       						  }
@@ -139,7 +121,22 @@ function getApi(product){
 							})
 			
 	}
-	
+function getReview(product, thisword) {
+	$.ajax({
+		type: "GET",
+		url: "/rpi",
+		data: {product:encodeURIComponent(product),thisword:encodeURIComponent(thisword)},
+		success: function(response){
+		var par = JSON.parse(response);
+		var Json = par['es_apiResponse']['es_result'];
+		for (idx in Json){																						
+		var summury = Json[idx]['es_summary'];
+		review_data += '<div>summury</div>';
+		}				
+		$('#review').append(review_data);
+		}
+		});
+}	
 
 var navM = document.getElementById('mattress');
 var navS = document.getElementById('sofa');
@@ -156,18 +153,23 @@ $("#mattress").click(function(){
 	navM.classList.add('active');
 	
 	$("#asset1").click(function(){
+	d3.select("#wordcloud").select('svg').remove();
 		getApi("Q4 유로탑 롤팩 매트리스 2size")
 	});
 	$("#asset2").click(function(){
+	d3.select("#wordcloud").select('svg').remove();
 		getApi("몬스터 필로우탑 침대 매트리스 80T (S/SS/Q/K) 2colors")
 	});
 	$("#asset3").click(function(){
+	d3.select("#wordcloud").select('svg').remove();
 		getApi("편안한 제주 본넬스프링 침대 매트리스 (싱글/슈퍼싱글/퀸/킹)")
 	});
 	$("#asset4").click(function(){
+	d3.select("#wordcloud").select('svg').remove();
 		getApi("몬스터 필로우탑 침대 매트리스 50T (S/SS/Q/K) 2colors")
 	});
 	$("#asset5").click(function(){
+	d3.select("#wordcloud").select('svg').remove();
 		getApi("편안한 제주 필로우탑 본넬스프링 침대 매트리스 (싱글/슈퍼싱글/퀸/킹)")
 	});
 	
@@ -181,21 +183,27 @@ $("#sofa").click(function(){
 	navS.classList.add('active');
 	
 	$("#asset1").click(function(){
+	d3.select("#wordcloud").select('svg').remove();
 		getApi("루비 2인 소파 패브릭 8colors")
 	});
 	$("#asset2").click(function(){
+	d3.select("#wordcloud").select('svg').remove();
 		getApi("프라제르 아쿠아텍스 4인용 소파 (스툴증정) 2colors")
 	});
 	$("#asset3").click(function(){
+	d3.select("#wordcloud").select('svg').remove();
 		getApi("DK053 3인용 풀커버 패브릭 소파 5colors (스툴 기본포함)")
 	});
 	$("#asset4").click(function(){
+	d3.select("#wordcloud").select('svg').remove();
 		getApi("[5%쿠폰] POL 아쿠아텍스 3인소파 2colors(스툴무료증정)")
 	});
 	$("#asset5").click(function(){
+	d3.select("#wordcloud").select('svg').remove();
 		getApi("[10%쿠폰] 타미 1인 패브릭소파 3colors")
 	});
 });
+
 $("#hangger").click(function(){
 
 	navS.classList.remove('active');
@@ -205,21 +213,27 @@ $("#hangger").click(function(){
 	navH.classList.add('active');
 	
 	$("#asset1").click(function(){
+	d3.select("#wordcloud").select('svg').remove();
 		getApi("미엘레 1단 스탠드 행거 4colors")
 	});
 	$("#asset2").click(function(){
+	d3.select("#wordcloud").select('svg').remove();
 		getApi("(당일발송) 무볼트 드레스룸 조립식 멀티행거")
 	});
 	$("#asset3").click(function(){
+	d3.select("#wordcloud").select('svg').remove();
 		getApi("당일출고 순수원목 수납 선반형 1단 A행거")
 	});
 	$("#asset4").click(function(){
+	d3.select("#wordcloud").select('svg').remove();
 		getApi("왕자 네오스페이스 (베이직2단)")
 	});
 	$("#asset5").click(function(){
+	d3.select("#wordcloud").select('svg').remove();
 		getApi("[5%쿠폰]BRUG 스탠드행거 KS1002/LDR")
 	});
 });
+
 $("#table").click(function(){
 
 	navM.classList.remove('active');
@@ -229,18 +243,23 @@ $("#table").click(function(){
 	navT.classList.add('active');
 	
 	$("#asset1").click(function(){
+	d3.select("#wordcloud").select('svg').remove();
 		getApi("FW 화이트 원형테이블 700size")
 	});
 	$("#asset2").click(function(){
+	d3.select("#wordcloud").select('svg').remove();
 		getApi("원형 티 카페 테이블 2size")
 	});
 	$("#asset3").click(function(){
+	d3.select("#wordcloud").select('svg').remove();
 		getApi("마일로 원형 테이블 800")
 	});
 	$("#asset4").click(function(){
+	d3.select("#wordcloud").select('svg').remove();
 		getApi("[쿠폰할인] 올리브 1200 렌지대형 아일랜드식탁 GG132C")
 	});
 	$("#asset5").click(function(){
+	d3.select("#wordcloud").select('svg').remove();
 		getApi("FW 화이트 원형테이블 800size")
 	});
 });
