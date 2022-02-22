@@ -12,19 +12,16 @@
 <body>
 
 
-
-<div class="row">
-
 <!--WordCloud-->
+<div class="card-wrapper">
       <div class="card">
-        <div id="wordcloud"></div>
+        <div id="wordcloud" style="width:500px;height:500px"></div>
       </div>
        <div class="card" style="width:500px;height:500px">
         <div id="review">
         </div>
       </div>
-    </div>
-
+</div>
 <!-- 네비게이션 바 -->
 <nav class="navbar fixed-bottom navbar-expand-sm navbar" style="padding-bottom:30px;">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,11 +40,11 @@
       <button type="button" class="btn btn-primary" id="table" >
       🧇 식탁</button>
       <div class="dropdown-content">
-        <a href="#asset1">product1</a>
-        <a href="#asset2">product2</a>
-        <a href="#asset3">product3</a>
-        <a href="#asset4">product4</a>
-        <a href="#asset5">product5</a>
+        <a id="asset1">product1</a>
+        <a id="asset2">product2</a>
+        <a id="asset3">product3</a>
+        <a id="asset4">product4</a>
+        <a id="asset5">product5</a>
       </div>
 </div>
 </nav>
