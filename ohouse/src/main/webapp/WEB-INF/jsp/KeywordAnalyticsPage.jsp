@@ -4,14 +4,12 @@
 <head>
 <meta charset="UTF-8" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/kastyles.css" />
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js" type="text/JavaScript"></script>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 </head>
+
 <body>
 
-
+<p class="subtitle" id="productName">Q4 유로탑 롤팩 매트리스 2size</p>
 <!--WordCloud-->
 <div class="card-wrapper">
       <div class="card">
@@ -23,7 +21,7 @@
       </div>
 </div>
 <!-- 네비게이션 바 -->
-<nav class="navbar fixed-bottom navbar-expand-sm navbar" style="padding-bottom:30px;">
+<nav class="navbar fixed-bottom navbar-expand-sm navbar" style="padding-bottom:100px;">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
 </button>
@@ -32,7 +30,7 @@
 
       <button type="button" class="btn btn-primary" id="mattress">
       <span class="dropbtn_icon"></span>
-      🛏️ 매트리스</button>
+      🛏️ 매트리스</button> 
       <button type="button" class="btn btn-primary" id="sofa" >
 	  🛋️ 소파</button>
       <button type="button" class="btn btn-primary" id="hangger">
@@ -40,11 +38,11 @@
       <button type="button" class="btn btn-primary" id="table" >
       🧇 식탁</button>
       <div class="dropdown-content">
-        <a id="asset1">product1</a>
-        <a id="asset2">product2</a>
-        <a id="asset3">product3</a>
-        <a id="asset4">product4</a>
-        <a id="asset5">product5</a>
+        <a id="asset1">1</a>
+        <a id="asset2">2</a>
+        <a id="asset3">3</a>
+        <a id="asset4">4</a>
+        <a id="asset5">5</a>
       </div>
 </div>
 </nav>
