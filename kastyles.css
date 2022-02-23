@@ -1,0 +1,156 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
+@font-face {
+    font-family: 'OTWelcomeBA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeBA.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GongGothicMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'YUniverse-B';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_yuniverse@1.0/YUniverse-B.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'KyoboHandwriting2020A';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/KyoboHandwriting2020A.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.hide {
+  display: none;
+}
+.dropdown{
+  position : relative;
+  display : inline-block;
+}
+
+.dropdown-content{
+  display : none;
+  position : absolute;
+  z-index : 1; /*다른 요소들보다 앞에 배치*/
+  font-weight: 400;
+  background-color: #f9f9f9;
+  min-width : 500px;
+}
+.dropdown-content a{
+	float:left;
+  display : block;
+  text-decoration : none;
+  color : rgb(37, 37, 37);
+  font-size: 12px;
+  padding : 12px 20px;
+}
+
+.dropdown-content a:hover{
+  background-color : #ececec
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/*commendstyles*/
+.navbar.fixed-bottom{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.btn-primary {
+  font-family: GongGothicMedium;
+  font-size: 15px;
+  color: rgba(58, 133, 191, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(58, 133, 191, 0.75);
+  border-radius: 40px;
+  background: white;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-primary:hover {
+  color: #FFF;
+  background: rgba(58, 133, 191, 1);
+  border: 2px solid rgba(58, 133, 191, 0.75);
+}
+.btn-primary.active {
+  color: #FFF;
+  background: rgba(58, 133, 191, 3);
+  border: 2px solid rgba(58, 133, 191, 0.75);
+}
+.active{
+  color: #FFF;
+  background: rgba(58, 133, 191, 0.75);
+  border: 2px solid rgba(58, 133, 191, 0.75);
+}
+.card-wrapper{
+	text-align: center;
+	padding-top: 80px;
+}
+.subtitle{
+	position:absolute;
+	font-size: 25pt;
+	font-family: 'KyoboHandwriting2020A';
+	margin-left:50px;
+	font-weight: bold;
+}
+.card{
+	line-height: 100px;
+	color: black;
+	text-align: center;
+	margin:0 10px;
+	display: inline-block;
+	border-radius: 15px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.is-hide{
+    display:none;
+}
+
+/* 리뷰 데이터 디자인 */
+
+.review {
+	line-height: 12px;
+}
+.OFHighlightTerm5{
+	background-color: #DEFF00;
+}
+
+
+.click-only-text {
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+.click-only-text::selection {
+      background: none;
+    }
+
+.word-default {
+      fill: cadetblue;
+      font-weight: normal;
+    }
+.word-hovered {
+      fill: teal;
+      font-weight: bold;
+    }
+.word-selected {
+      fill: darkslategrey;
+      font-weight: bold;
+    }
