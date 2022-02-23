@@ -25,7 +25,7 @@
 <body>
         <nav class="navbar navbar-light bg-dark fixed-top">
             <ul class="menu1">
-                <li onclick="ajaxTest('/Main')">메인화면</li>
+                <li onclick="ajaxTest('/Main')">HOME</li>
                 <li onclick="ajaxTest('/recommend')">오늘의 추천</li>
                 <li onclick="ajaxTest('/keyword')">오늘의 분석</li>
             </ul>
