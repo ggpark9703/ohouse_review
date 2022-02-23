@@ -23,7 +23,9 @@
     font-weight: normal;
     font-style: normal;
 }
-
+html,body {
+  height: 100%;
+}
 .hide {
   display: none;
 }
@@ -57,7 +59,7 @@
   display: block;
 }
 
-/*commendstyles*/
+/*commendstyles css 에서 가져옴*/
 .navbar.fixed-bottom{
   display: flex;
   justify-content: center;
@@ -99,6 +101,8 @@
 .card-wrapper{
 	text-align: center;
 	padding-top: 80px;
+	display: flex;
+	margin-left:20%;
 }
 .subtitle{
 	position:absolute;
@@ -108,13 +112,24 @@
 	font-weight: bold;
 }
 .card{
+	font-size: 13px;
+	padding: 10px 10px;
+	padding-right:10px;
+	width : 800px;
+	height : 1000px;
+	text-align: center;
 	line-height: 100px;
 	color: black;
-	text-align: center;
-	margin:0 10px;
-	display: inline-block;
+	margin-right:20px;
+	text-align: left;
 	border-radius: 15px;
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.writer{
+	font-size: 15pt;
+	font-family: 'KyoboHandwriting2020A';
+	font-weight: bold;
 }
 
 .is-hide{
@@ -122,11 +137,16 @@
 }
 
 /* 리뷰 데이터 디자인 */
-
 .review {
-	line-height: 12px;
+	line-height: 15px;
+	font-size: 14pt;
+	font-family: 'KyoboHandwriting2020A';
+	padding:10px;
 }
 .OFHighlightTerm5{
+	background-color: #DEFF00;
+}
+.OFHighlightTerm1{
 	background-color: #DEFF00;
 }
 
