@@ -23,6 +23,7 @@
     font-weight: normal;
     font-style: normal;
 }
+
 .hide {
   display: none;
 }
@@ -97,14 +98,14 @@
 }
 .card-wrapper{
 	text-align: center;
-	padding-top: 100px;
+	padding-top: 80px;
 }
 .subtitle{
 	position:absolute;
-	font-size: 18pt;
+	font-size: 25pt;
 	font-family: 'KyoboHandwriting2020A';
-	margin:0 50px;
-	
+	margin-left:50px;
+	font-weight: bold;
 }
 .card{
 	line-height: 100px;
@@ -115,9 +116,21 @@
 	border-radius: 15px;
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
+
 .is-hide{
     display:none;
 }
+
+/* 리뷰 데이터 디자인 */
+
+.review {
+	line-height: 12px;
+}
+.OFHighlightTerm5{
+	background-color: #DEFF00;
+}
+
+
 .click-only-text {
       cursor: pointer;
       -webkit-user-select: none;
