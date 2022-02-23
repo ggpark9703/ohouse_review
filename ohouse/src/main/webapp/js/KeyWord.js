@@ -65,8 +65,8 @@ function getApi(product){
 				function draw(words){
 				
 					var fill = d3.scale.category20();
-					var width = 600;
-					var height = 600;
+					var width = 800;
+					var height = 800;
 	
 				d3.layout.cloud()
 				  	.size([width, height])
