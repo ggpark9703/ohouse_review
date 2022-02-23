@@ -51,7 +51,7 @@ public class KeywordServiceImpl implements KeywordService {
 		StringBuilder sb = new StringBuilder();
 		URLConnection urlConn = null;
 		InputStreamReader in = null;
-		String myURL = "http://10.10.0.4:8393/api/v10/search?results=5&collection=T1_OZIP2022&output=application/json&query=(keyword::/추천/디자인%20OR%20keyword::/추천/가격%20OR%20keyword::/추천/내구성)%20AND%20(keyword::/카테고리/제품명/%22"+product+"%22)%20AND%20(keyword::/%22Part%20of%20Speech%22/%22"+thisword+"%22)";
+		String myURL = "http://10.10.0.4:8393/api/v10/search?results=10&collection=T1_OZIP2022&output=application/json&query=(keyword::/추천/디자인%20OR%20keyword::/추천/가격%20OR%20keyword::/추천/내구성)%20AND%20(keyword::/카테고리/제품명/%22"+product+"%22)%20AND%20(keyword::/%22Part%20of%20Speech%22/%22"+thisword+"%22)";
 
 		System.out.println(myURL);
 		try {
