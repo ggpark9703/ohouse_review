@@ -13,12 +13,11 @@
 <!--WordCloud-->
 <div class="card-wrapper">
       <div class="card">
-        <div id="wordcloud" style="width:600px;height:600px"></div>
+        <div id="wordcloud" style="width:800px; height:1000px"></div>
       </div>
-       <div class="card" style="width:600px;height:600px">
-       <div><p id = "Pword">오늘</p>의 키워드</div>
-        <div id="review" class="review">
-        </div>
+<!--Review-->      
+       <div class="card" >
+        <div id="review" class="review" style="width:800px; height:1000px"></div>
       </div>
 </div>
 
