@@ -40,9 +40,12 @@ function getApi(product){
 						||Json[idx]['label']=="최고"||Json[idx]['label']=="들다"||Json[idx]['label']=="아주"
 						||Json[idx]['label']=="박스"||Json[idx]['label']=="비닐"||Json[idx]['label']=="엄청"
 						||Json[idx]['label']=="침대"||Json[idx]['label']=="없이"||Json[idx]['label']=="후기"
-						||Json[idx]['label']=="800"||Json[idx]['label']=="600"||Json[idx]['label']=="이"){
+						||Json[idx]['label']=="800"||Json[idx]['label']=="600"||Json[idx]['label']=="이"
+						||Json[idx]['label']=="레이"||Json[idx]['label']=="푹"||Json[idx]['label']=="날짜"
+						||Json[idx]['label']=="배송비"||Json[idx]['label']=="가다"||Json[idx]['label']=="ㅋㅋ"){
 					idx = idx +1;
-				}//가독성을 위해 분리
+				}//Delete 사전, 가독성을 위해 분리
+				//성비 = 가성비로 시각화
 				else if(Json[idx]['label']=="성비"){
 				arr.push({
 						label : "가성비",
@@ -62,13 +65,13 @@ function getApi(product){
 				function draw(words){
 				
 					var fill = d3.scale.category20();
-					var width = 500;
-					var height = 500;
+					var width = 600;
+					var height = 600;
 	
 				d3.layout.cloud()
 				  	.size([width, height])
 				 	.words(words)
-				 	.padding(0)
+				 	.padding(2)
 				  	.rotate(0)
 				  	.font("Impact")
 				  	.fontSize(function(d) {return d.value*10;})
@@ -111,30 +114,34 @@ function getApi(product){
 				        function handleClick() {
 				       		var e = d3.select(this).text();
 				       		console.log(e);
-				       		var k = getReview(product, e);
-				       		console.log(k);
-							
-								}	
-      						  }
- 							}
-
-						}
-							})
-			
-	}
-function getReview(product, thisword) {
-	$.ajax({
-		type: "GET",
-		url: "/rpi",
-		data: {product:encodeURIComponent(product),thisword:encodeURIComponent(thisword)},
-		success: function(response){
-		var par = JSON.parse(response);
-		var Json = par['es_apiResponse']['es_result'];
-		for (idx in Json){																						
-		var summury = Json[idx]['es_summary'];}
-		}});
-		return summury;
-}	
+				       		$(document).ready(function(){
+							$.ajax({
+								type: "GET",
+								url: "/rpi",
+								data: {product:encodeURIComponent(product),thisword:encodeURIComponent(e)},
+								success: function(response){
+									$('#review').empty();
+										var par = JSON.parse(response);
+										console.log(par);
+										var Json = par['es_apiResponse']['es_result'];
+										console.log(Json);
+										var reviewdata = "";
+										for (idx in Json){
+											
+											var writer = Json[idx]['es_title'];
+											var summary = Json[idx]['es_summary'];
+													
+											reviewdata += '<br>'+'<div class="writer">'+writer+'</div>'+'<br>'+summary+'<br>';
+											}
+				$('#Pword').append(product);						
+				$('#review').append(reviewdata);
+				console.log(reviewdata);
+			}				
+		})
+		});
+	}}}
+}})
+}
 
 var navM = document.getElementById('mattress');
 var navS = document.getElementById('sofa');
@@ -150,33 +157,42 @@ $("#mattress").click(function(){
 	
 	navM.classList.add('active');
 	
-	$("#asset1").click(function(){
+	$("#asset1").click(function(event){
 	d3.select("#wordcloud").select('svg').remove();
 		$("#productName").text("Q4 유로탑 롤팩 매트리스 2size");
 		getApi("Q4 유로탑 롤팩 매트리스 2size");
+	event.stopPropagation();	
 	});
-	$("#asset2").click(function(){
+	
+	$("#asset2").click(function(event){
 	d3.select("#wordcloud").select('svg').remove();
 		$("#productName").text("몬스터 필로우탑 침대 매트리스 80T (S/SS/Q/K) 2colors");
 		getApi("몬스터 필로우탑 침대 매트리스 80T (S/SS/Q/K) 2colors");
+	event.stopPropagation();	
 	});
-	$("#asset3").click(function(){
+	
+	$("#asset3").click(function(event){
 	d3.select("#wordcloud").select('svg').remove();
 		$("#productName").text("편안한 제주 본넬스프링 침대 매트리스 (싱글/슈퍼싱글/퀸/킹)");
 		getApi("편안한 제주 본넬스프링 침대 매트리스 (싱글/슈퍼싱글/퀸/킹)");
+	event.stopPropagation();	
 	});
-	$("#asset4").click(function(){
+	
+	$("#asset4").click(function(event){
 	d3.select("#wordcloud").select('svg').remove();
 		$("#productName").text("몬스터 필로우탑 침대 매트리스 80T (S/SS/Q/K) 2colors");
 		getApi("몬스터 필로우탑 침대 매트리스 50T (S/SS/Q/K) 2colors");
+	event.stopPropagation();	
 	});
-	$("#asset5").click(function(){
+	
+	$("#asset5").click(function(event){
 	d3.select("#wordcloud").select('svg').remove();
 		$("#productName").text("편안한 제주 필로우탑 본넬스프링 침대 매트리스 (싱글/슈퍼싱글/퀸/킹)");
 		getApi("편안한 제주 필로우탑 본넬스프링 침대 매트리스 (싱글/슈퍼싱글/퀸/킹)");
+	event.stopPropagation();	
 	});
-	
 });
+
 $("#sofa").click(function(){
 	d3.select("#wordcloud").select('svg').remove();
 	navM.classList.remove('active');
@@ -185,30 +201,39 @@ $("#sofa").click(function(){
 	
 	navS.classList.add('active');
 	
-	$("#asset1").click(function(){
+	$("#asset6").click(function(event){
 	d3.select("#wordcloud").select('svg').remove();
 		$("#productName").text("루비 2인 소파 패브릭 8colors");
 		getApi("루비 2인 소파 패브릭 8colors");
+	event.stopPropagation();	
 	});
-	$("#asset2").click(function(){
+	
+	$("#asset7").click(function(event){
 	d3.select("#wordcloud").select('svg').remove();
 		$("#productName").text("프라제르 아쿠아텍스 4인용 소파 (스툴증정) 2colors");
 		getApi("프라제르 아쿠아텍스 4인용 소파 (스툴증정) 2colors");
+	event.stopPropagation();	
 	});
-	$("#asset3").click(function(){
+	
+	$("#asset8").click(function(event){
 	d3.select("#wordcloud").select('svg').remove();
 		$("#productName").text("DK053 3인용 풀커버 패브릭 소파 5colors (스툴 기본포함)");
 		getApi("DK053 3인용 풀커버 패브릭 소파 5colors (스툴 기본포함)");
+	event.stopPropagation();	
 	});
-	$("#asset4").click(function(){
+	
+	$("#asset9").click(function(event){
 	d3.select("#wordcloud").select('svg').remove();
-		$("#productName").text("[5%쿠폰] POL 아쿠아텍스 3인소파 2colors(스툴무료증정)");
+		$("#productName").text("POL 아쿠아텍스 3인소파 2colors(스툴무료증정)");
 		getApi("[5%쿠폰] POL 아쿠아텍스 3인소파 2colors(스툴무료증정)");
+	event.stopPropagation();	
 	});
-	$("#asset5").click(function(){
+	
+	$("#asset10").click(function(event){
 	d3.select("#wordcloud").select('svg').remove();
-		$("#productName").text("[10%쿠폰] 타미 1인 패브릭소파 3colors");
+		$("#productName").text("타미 1인 패브릭소파 3colors");
 		getApi("[10%쿠폰] 타미 1인 패브릭소파 3colors");
+	event.stopPropagation();	
 	});
 });
 
@@ -220,31 +245,36 @@ $("#hangger").click(function(){
 	
 	navH.classList.add('active');
 	
-	$("#asset1").click(function(){
+	$("#asset11").click(function(event){
 	d3.select("#wordcloud").select('svg').remove();
-		$("#productName").text("[10%쿠폰] 타미 1인 패브릭소파 3colors");
+		$("#productName").text("미엘레 1단 스탠드 행거 4colors");
 		getApi("미엘레 1단 스탠드 행거 4colors");
+	event.stopPropagation();	
 	});
-	$("#asset2").click(function(){
+	$("#asset12").click(function(event){
 	d3.select("#wordcloud").select('svg').remove();
-		$("#productName").text("[10%쿠폰] 타미 1인 패브릭소파 3colors");
+		$("#productName").text("무볼트 드레스룸 조립식 멀티행거");
 		getApi("(당일발송) 무볼트 드레스룸 조립식 멀티행거");
+	event.stopPropagation();	
 	});
-	$("#asset3").click(function(){
+	$("#asset13").click(function(event){
 	d3.select("#wordcloud").select('svg').remove();
-		$("#productName").text("[10%쿠폰] 타미 1인 패브릭소파 3colors");
+		$("#productName").text("순수원목 수납 선반형 1단 A행거");
 		getApi("당일출고 순수원목 수납 선반형 1단 A행거");
+	event.stopPropagation();	
 	});
-	$("#asset4").click(function(){
+	$("#asset14").click(function(event){
 	d3.select("#wordcloud").select('svg').remove();
-		$("#productName").text("[10%쿠폰] 타미 1인 패브릭소파 3colors");
+		$("#productName").text("왕자 네오스페이스 (베이직2단)");
 		getApi("왕자 네오스페이스 (베이직2단)");
+	event.stopPropagation();	
 	});
-	$("#asset5").click(function(){
+	$("#asset15").click(function(event){
 	d3.select("#wordcloud").select('svg').remove();
-		$("#productName").text("[10%쿠폰] 타미 1인 패브릭소파 3colors");
+		$("#productName").text("BRUG 스탠드행거 KS1002/LDR");
 		getApi("[5%쿠폰]BRUG 스탠드행거 KS1002/LDR");
-	});
+	event.stopPropagation();	
+	});	
 });
 
 $("#table").click(function(){
@@ -255,33 +285,38 @@ $("#table").click(function(){
 	
 	navT.classList.add('active');
 	
-	$("#asset1").click(function(){
+	$("#asset16").click(function(event){
 	d3.select("#wordcloud").select('svg').remove();
-		$("#productName").text("[10%쿠폰] 타미 1인 패브릭소파 3colors");
+		$("#productName").text("FW 화이트 원형테이블 700size");
 		getApi("FW 화이트 원형테이블 700size");
+	event.stopPropagation();	
 	});
 	
-	$("#asset2").click(function(){
+	$("#asset17").click(function(event){
 	d3.select("#wordcloud").select('svg').remove();
-		$("#productName").text("[10%쿠폰] 타미 1인 패브릭소파 3colors");
+		$("#productName").text("원형 티 카페 테이블 2size");
 		getApi("원형 티 카페 테이블 2size");
+	event.stopPropagation();	
 	});
 	
-	$("#asset3").click(function(){
+	$("#asset18").click(function(event){
 	d3.select("#wordcloud").select('svg').remove();
-		$("#productName").text("[10%쿠폰] 타미 1인 패브릭소파 3colors");
+		$("#productName").text("마일로 원형 테이블 800");
 		getApi("마일로 원형 테이블 800");
+	event.stopPropagation();	
 	});
 	
-	$("#asset4").click(function(){
+	$("#asset19").click(function(event){
 	d3.select("#wordcloud").select('svg').remove();
-		$("#productName").text("[10%쿠폰] 타미 1인 패브릭소파 3colors");
+		$("#productName").text("올리브 1200 렌지대형 아일랜드식탁 GG132C");
 		getApi("[쿠폰할인] 올리브 1200 렌지대형 아일랜드식탁 GG132C");
+	event.stopPropagation();	
 	});
 	
-	$("#asset5").click(function(){
+	$("#asset20").click(function(event){
 	d3.select("#wordcloud").select('svg').remove();
-		$("#productName").text("[10%쿠폰] 타미 1인 패브릭소파 3colors");
+		$("#productName").text("FW 화이트 원형테이블 800size");
 		getApi("FW 화이트 원형테이블 800size");
-	});
+	event.stopPropagation();	
+	});	
 });
