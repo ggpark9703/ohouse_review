@@ -13,16 +13,16 @@
 <!--WordCloud-->
 <div class="card-wrapper">
       <div class="card">
-        <div id="wordcloud" style="width:800px; height:1000px"></div>
+        <div id="wordcloud" style="width:600px; height:700px"></div>
       </div>
 <!--Review-->      
        <div class="card" >
-        <div id="review" class="review" style="width:800px; height:1000px"></div>
+        <div id="review" class="review" style="width:590px; height:700px"></div>
       </div>
 </div>
 
 <!-- 네비게이션 바 -->
-<nav class="navbar fixed-bottom navbar-expand-sm navbar" style="padding-bottom:100px;">
+<nav class="navbar fixed-bottom navbar-expand-sm navbar" style="padding-bottom:100px">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span></button>
 
