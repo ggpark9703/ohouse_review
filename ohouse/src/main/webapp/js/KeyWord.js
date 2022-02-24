@@ -42,7 +42,8 @@ function getApi(product){
 						||Json[idx]['label']=="침대"||Json[idx]['label']=="없이"||Json[idx]['label']=="후기"
 						||Json[idx]['label']=="800"||Json[idx]['label']=="600"||Json[idx]['label']=="이"
 						||Json[idx]['label']=="레이"||Json[idx]['label']=="푹"||Json[idx]['label']=="날짜"
-						||Json[idx]['label']=="배송비"||Json[idx]['label']=="가다"||Json[idx]['label']=="ᄏᄏ"){
+						||Json[idx]['label']=="배송비"||Json[idx]['label']=="가다"||Json[idx]['label']=="ᄏᄏ"
+						||Json[idx]['label']=="인용"||Json[idx]['label']=="친절"){
 					idx = idx +1;
 				}//Delete 사전, 가독성을 위해 분리
 				//성비 = 가성비로 시각화
