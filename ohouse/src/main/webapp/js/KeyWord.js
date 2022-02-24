@@ -42,7 +42,7 @@ function getApi(product){
 						||Json[idx]['label']=="침대"||Json[idx]['label']=="없이"||Json[idx]['label']=="후기"
 						||Json[idx]['label']=="800"||Json[idx]['label']=="600"||Json[idx]['label']=="이"
 						||Json[idx]['label']=="레이"||Json[idx]['label']=="푹"||Json[idx]['label']=="날짜"
-						||Json[idx]['label']=="배송비"||Json[idx]['label']=="가다"||Json[idx]['label']=="ㅋㅋ"){
+						||Json[idx]['label']=="배송비"||Json[idx]['label']=="가다"||Json[idx]['label']=="ᄏᄏ"){
 					idx = idx +1;
 				}//Delete 사전, 가독성을 위해 분리
 				//성비 = 가성비로 시각화
@@ -65,13 +65,13 @@ function getApi(product){
 				function draw(words){
 				
 					var fill = d3.scale.category20();
-					var width = 800;
-					var height = 800;
+					var width = 600;
+					var height = 600;
 	
 				d3.layout.cloud()
 				  	.size([width, height])
 				 	.words(words)
-				 	.padding(2)
+				 	.padding(5)
 				  	.rotate(0)
 				  	.font("Impact")
 				  	.fontSize(function(d) {return d.value*10;})
@@ -132,6 +132,10 @@ function getApi(product){
 											var summary = Json[idx]['es_summary'];
 													
 											reviewdata += '<br>'+'<div class="writer">'+writer+'</div>'+'<br>'+summary+'<br>';
+											
+											if(idx>4) {
+												break;
+											}
 											}
 				$('#Pword').append(product);						
 				$('#review').append(reviewdata);
